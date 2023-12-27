@@ -5,11 +5,13 @@ import UIKit
 
 struct ContentView: View {
     var body: some View {
+
         // SwiftUI NavigationView 안에 UIKit 기반의 MainVC를 호스팅
         NavigationView {
             MainVCRepresentable()
                 .edgesIgnoringSafeArea(.all)
                 .navigationBarHidden(true) // 네비게이션 바 숨김
+
         }
     }
 }
