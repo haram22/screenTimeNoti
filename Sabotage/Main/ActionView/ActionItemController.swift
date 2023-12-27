@@ -55,7 +55,7 @@ class ActionItemController: UIViewController {
     }
     
     @objc func nextButtonTapped() {
-        let saveActionItemController = SaveActionItemController()
-        navigationController?.pushViewController(saveActionItemController, animated: true)
+        let addActionItemController = AddActionItemController()
+        navigationController?.pushViewController(addActionItemController, animated: true)
     }
 }

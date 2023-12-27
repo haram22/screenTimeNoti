@@ -5,6 +5,7 @@ import UIKit
 class MainVC: UIViewController {
     var segmentedControl = UISegmentedControl()
     var actionButton = UIButton(type: .system)
+    var addButton = UIButton(type: .system)
     var tabBar = UITabBar()
     
     override func viewDidLoad() {
@@ -28,7 +29,7 @@ class MainVC: UIViewController {
             segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
         
-        // 추가 버튼
+        // "액션 아이템" 추가 버튼
         actionButton.setTitle("+", for: .normal)
         actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
         actionButton.layer.cornerRadius = 25 // 테두리 둥글기 설정
@@ -36,7 +37,7 @@ class MainVC: UIViewController {
         actionButton.layer.borderColor = UIColor.black.cgColor // 테두리 색상 설정
         actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
         actionButton.isHidden = false // 버튼을 처음부터 보이도록 변경
-        
+    
         view.addSubview(actionButton)
         
         actionButton.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +46,24 @@ class MainVC: UIViewController {
             actionButton.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 30),
             actionButton.widthAnchor.constraint(equalToConstant: 350),
             actionButton.heightAnchor.constraint(equalToConstant: 80)
+        ])
+        // "제한 서비스" 추가 버튼
+        addButton.setTitle("+", for: .normal)
+        addButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        addButton.layer.cornerRadius = 25 // 테두리 둥글기 설정
+        addButton.layer.borderWidth = 1 // 테두리 두께 설정
+        addButton.layer.borderColor = UIColor.black.cgColor // 테두리 색상 설정
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        addButton.isHidden = true // 버튼을 처음부터 보이도록 변경
+        
+        view.addSubview(addButton) // addButton을 뷰에 추가
+                
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addButton.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 30),
+            addButton.widthAnchor.constraint(equalToConstant: 350),
+            addButton.heightAnchor.constraint(equalToConstant: 80)
         ])
         
         tabBar.delegate = self
@@ -68,17 +87,25 @@ class MainVC: UIViewController {
         tabBar.setItems([homeItem, analysisItem, profileItem], animated: false)
     }
     
+    // 토글 선택 시 상황
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
+        if sender.selectedSegmentIndex == 0 { // "액션 아이템" 눌렀을 때
             actionButton.isHidden = false
-        } else if sender.selectedSegmentIndex == 1 {
+            addButton.isHidden = true // 액션 아이템 선택 시 추가 버튼 숨김
+        } else if sender.selectedSegmentIndex == 1 { // "제한 서비스" 눌렀을 때
             actionButton.isHidden = true
+            addButton.isHidden = false // 제한 서비스 선택 시 추가 버튼 표시
         }
     }
-    
+
     @objc func actionButtonTapped() {
         let actionItemController = ActionItemController()
         navigationController?.pushViewController(actionItemController, animated: true)
+    }
+    
+    @objc func addButtonTapped() {
+        let limitItemController = LimitItemController()
+        navigationController?.pushViewController(limitItemController, animated: true)
     }
 }
 
