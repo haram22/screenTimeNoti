@@ -11,28 +11,30 @@
 		214CC4832B3C4782003B74EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214CC4822B3C4782003B74EB /* ContentView.swift */; };
 		214CC4852B3C4784003B74EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214CC4842B3C4784003B74EB /* Assets.xcassets */; };
 		214CC4882B3C4784003B74EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214CC4872B3C4784003B74EB /* Preview Assets.xcassets */; };
-		214CC4902B3C4CFB003B74EB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 214CC48F2B3C4CFB003B74EB /* SnapKit */; };
-		214CC4922B3C4CFB003B74EB /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 214CC4912B3C4CFB003B74EB /* SnapKit-Dynamic */; };
 		8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C05C2B3C491600219714 /* ProfileVC.swift */; };
 		8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0602B3C4A7900219714 /* AnalysisVC.swift */; };
 		8852C0652B3C4AB300219714 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0642B3C4AB300219714 /* MainVC.swift */; };
 		8852C0692B3C4B1300219714 /* ActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0682B3C4B1300219714 /* ActionItemController.swift */; };
 		8852C06B2B3C4B2800219714 /* SaveActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C06A2B3C4B2800219714 /* SaveActionItemController.swift */; };
 		8852C06D2B3C4B5C00219714 /* LimitItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C06C2B3C4B5C00219714 /* LimitItemController.swift */; };
+		B692A2FC62489F454D08916D /* Pods_Sabotage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D54989E361DB14E3DA0ACBD /* Pods_Sabotage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D54989E361DB14E3DA0ACBD /* Pods_Sabotage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sabotage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		214CC47D2B3C4782003B74EB /* Sabotage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sabotage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		214CC4802B3C4782003B74EB /* SabotageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabotageApp.swift; sourceTree = "<group>"; };
 		214CC4822B3C4782003B74EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		214CC4842B3C4784003B74EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		214CC4872B3C4784003B74EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6FD33177F03DFB8AEC313974 /* Pods-Sabotage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.release.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.release.xcconfig"; sourceTree = "<group>"; };
 		8852C05C2B3C491600219714 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		8852C0602B3C4A7900219714 /* AnalysisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisVC.swift; sourceTree = "<group>"; };
 		8852C0642B3C4AB300219714 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		8852C0682B3C4B1300219714 /* ActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionItemController.swift; sourceTree = "<group>"; };
 		8852C06A2B3C4B2800219714 /* SaveActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionItemController.swift; sourceTree = "<group>"; };
 		8852C06C2B3C4B5C00219714 /* LimitItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LimitItemController.swift; path = "Sabotage/Preview Content/LimitItemController.swift"; sourceTree = SOURCE_ROOT; };
+		B67E6903597848D8825D1C81 /* Pods-Sabotage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.debug.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,8 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				214CC4902B3C4CFB003B74EB /* SnapKit in Frameworks */,
-				214CC4922B3C4CFB003B74EB /* SnapKit-Dynamic in Frameworks */,
+				B692A2FC62489F454D08916D /* Pods_Sabotage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +54,8 @@
 			children = (
 				214CC47F2B3C4782003B74EB /* Sabotage */,
 				214CC47E2B3C4782003B74EB /* Products */,
+				C4B8D01A6685DE79369298BF /* Pods */,
+				B367982E8053F16AA7F05DB0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +156,23 @@
 			path = LimitView;
 			sourceTree = "<group>";
 		};
+		B367982E8053F16AA7F05DB0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D54989E361DB14E3DA0ACBD /* Pods_Sabotage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4B8D01A6685DE79369298BF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B67E6903597848D8825D1C81 /* Pods-Sabotage.debug.xcconfig */,
+				6FD33177F03DFB8AEC313974 /* Pods-Sabotage.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,19 +180,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 214CC48B2B3C4784003B74EB /* Build configuration list for PBXNativeTarget "Sabotage" */;
 			buildPhases = (
+				A96BC9FC97872165C18B9F09 /* [CP] Check Pods Manifest.lock */,
 				214CC4792B3C4782003B74EB /* Sources */,
 				214CC47A2B3C4782003B74EB /* Frameworks */,
 				214CC47B2B3C4782003B74EB /* Resources */,
+				BD15039E30D11C9A80BEC16A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Sabotage;
-			packageProductDependencies = (
-				214CC48F2B3C4CFB003B74EB /* SnapKit */,
-				214CC4912B3C4CFB003B74EB /* SnapKit-Dynamic */,
-			);
 			productName = Sabotage;
 			productReference = 214CC47D2B3C4782003B74EB /* Sabotage.app */;
 			productType = "com.apple.product-type.application";
@@ -201,9 +219,6 @@
 				Base,
 			);
 			mainGroup = 214CC4742B3C4782003B74EB;
-			packageReferences = (
-				214CC48E2B3C4CFB003B74EB /* XCRemoteSwiftPackageReference "SnapKit" */,
-			);
 			productRefGroup = 214CC47E2B3C4782003B74EB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -224,6 +239,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A96BC9FC97872165C18B9F09 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Sabotage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BD15039E30D11C9A80BEC16A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sabotage/Pods-Sabotage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sabotage/Pods-Sabotage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sabotage/Pods-Sabotage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		214CC4792B3C4782003B74EB /* Sources */ = {
@@ -281,7 +338,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -344,7 +401,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -365,6 +422,7 @@
 		};
 		214CC48C2B3C4784003B74EB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B67E6903597848D8825D1C81 /* Pods-Sabotage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -394,6 +452,7 @@
 		};
 		214CC48D2B3C4784003B74EB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FD33177F03DFB8AEC313974 /* Pods-Sabotage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -443,30 +502,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		214CC48E2B3C4CFB003B74EB /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.6.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		214CC48F2B3C4CFB003B74EB /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 214CC48E2B3C4CFB003B74EB /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		214CC4912B3C4CFB003B74EB /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 214CC48E2B3C4CFB003B74EB /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 214CC4752B3C4782003B74EB /* Project object */;
 }
