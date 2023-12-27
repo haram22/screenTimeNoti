@@ -11,6 +11,12 @@
 		214CC4832B3C4782003B74EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214CC4822B3C4782003B74EB /* ContentView.swift */; };
 		214CC4852B3C4784003B74EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214CC4842B3C4784003B74EB /* Assets.xcassets */; };
 		214CC4882B3C4784003B74EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214CC4872B3C4784003B74EB /* Preview Assets.xcassets */; };
+		8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C05C2B3C491600219714 /* ProfileVC.swift */; };
+		8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0602B3C4A7900219714 /* AnalysisVC.swift */; };
+		8852C0652B3C4AB300219714 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0642B3C4AB300219714 /* MainVC.swift */; };
+		8852C0692B3C4B1300219714 /* ActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0682B3C4B1300219714 /* ActionItemController.swift */; };
+		8852C06B2B3C4B2800219714 /* SaveActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C06A2B3C4B2800219714 /* SaveActionItemController.swift */; };
+		8852C06D2B3C4B5C00219714 /* LimitItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C06C2B3C4B5C00219714 /* LimitItemController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		214CC4822B3C4782003B74EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		214CC4842B3C4784003B74EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		214CC4872B3C4784003B74EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8852C05C2B3C491600219714 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		8852C0602B3C4A7900219714 /* AnalysisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisVC.swift; sourceTree = "<group>"; };
+		8852C0642B3C4AB300219714 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		8852C0682B3C4B1300219714 /* ActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionItemController.swift; sourceTree = "<group>"; };
+		8852C06A2B3C4B2800219714 /* SaveActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionItemController.swift; sourceTree = "<group>"; };
+		8852C06C2B3C4B5C00219714 /* LimitItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LimitItemController.swift; path = "Sabotage/Preview Content/LimitItemController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,9 @@
 		214CC47F2B3C4782003B74EB /* Sabotage */ = {
 			isa = PBXGroup;
 			children = (
+				8852C0622B3C4A9800219714 /* Main */,
+				8852C05E2B3C493700219714 /* Analysis */,
+				8852C05A2B3C484500219714 /* Profile */,
 				214CC4802B3C4782003B74EB /* SabotageApp.swift */,
 				214CC4822B3C4782003B74EB /* ContentView.swift */,
 				214CC4842B3C4784003B74EB /* Assets.xcassets */,
@@ -65,6 +80,73 @@
 				214CC4872B3C4784003B74EB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8852C05A2B3C484500219714 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8852C05B2B3C48CD00219714 /* ProfileView */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		8852C05B2B3C48CD00219714 /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				8852C05C2B3C491600219714 /* ProfileVC.swift */,
+			);
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
+		8852C05E2B3C493700219714 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				8852C05F2B3C49A600219714 /* AnalysisView */,
+			);
+			path = Analysis;
+			sourceTree = "<group>";
+		};
+		8852C05F2B3C49A600219714 /* AnalysisView */ = {
+			isa = PBXGroup;
+			children = (
+				8852C0602B3C4A7900219714 /* AnalysisVC.swift */,
+			);
+			path = AnalysisView;
+			sourceTree = "<group>";
+		};
+		8852C0622B3C4A9800219714 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8852C0632B3C4AA200219714 /* MainView */,
+				8852C0662B3C4ABF00219714 /* ActionView */,
+				8852C0672B3C4ADC00219714 /* LimitView */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8852C0632B3C4AA200219714 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				8852C0642B3C4AB300219714 /* MainVC.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		8852C0662B3C4ABF00219714 /* ActionView */ = {
+			isa = PBXGroup;
+			children = (
+				8852C0682B3C4B1300219714 /* ActionItemController.swift */,
+				8852C06A2B3C4B2800219714 /* SaveActionItemController.swift */,
+			);
+			path = ActionView;
+			sourceTree = "<group>";
+		};
+		8852C0672B3C4ADC00219714 /* LimitView */ = {
+			isa = PBXGroup;
+			children = (
+				8852C06C2B3C4B5C00219714 /* LimitItemController.swift */,
+			);
+			path = LimitView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +219,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8852C0692B3C4B1300219714 /* ActionItemController.swift in Sources */,
+				8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */,
+				8852C0652B3C4AB300219714 /* MainVC.swift in Sources */,
+				8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */,
 				214CC4832B3C4782003B74EB /* ContentView.swift in Sources */,
 				214CC4812B3C4782003B74EB /* SabotageApp.swift in Sources */,
+				8852C06D2B3C4B5C00219714 /* LimitItemController.swift in Sources */,
+				8852C06B2B3C4B2800219714 /* SaveActionItemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
