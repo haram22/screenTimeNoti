@@ -9,19 +9,26 @@ import SwiftUI
 import FamilyControls
 
 @main
-struct ScreenTime_BarebonesApp: App {
+struct ScreenTime_SabotageApp: App {
     @StateObject var familyControlsManager = FamilyControlsManager.shared
     @StateObject var scheduleVM = ScheduleVM()
     init() {
+        Task {
+            // First, request Screen Time access.
+            handleRequestAuthorization()
+            
+            // After Screen Time access has been granted, request notification permission.
             requestNotificationPermission()
-        print("requestNotificationPermission")
+            
+            print("requestNotificationPermission")
         }
+    }
     var body: some Scene {
         WindowGroup {
             VStack {
                 // MARK: - ram 권한에 대한 조건 설정
                 if !familyControlsManager.hasScreenTimePermission {
-                    PermissionView()
+                    ContentView()
                 } else {
                     ContentView()
                 }
@@ -46,4 +53,8 @@ func requestNotificationPermission() {
             print("Notification Permission Denied.")
         }
     }
+}
+@MainActor
+func handleRequestAuthorization() {
+    FamilyControlsManager.shared.requestAuthorization()
 }
