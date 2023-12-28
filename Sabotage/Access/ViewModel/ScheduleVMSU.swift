@@ -42,12 +42,16 @@ enum ScheduleSectionInfo {
     }
 }
 
+let calendar = Calendar.current
+let now = Date()
+
 class ScheduleVM: ObservableObject {
+    
     // MARK: - 스케쥴 설정을 위한 멤버 변수
     @AppStorage("scheduleStartTime", store: UserDefaults(suiteName: Bundle.main.appGroupName))
-    var scheduleStartTime = Date() // 현재 시간
+    var scheduleStartTime = calendar.startOfDay(for: now)
     @AppStorage("scheduleEndTime", store: UserDefaults(suiteName: Bundle.main.appGroupName))
-    var scheduleEndTime = Date() + 900 // 현재 시간 + 15분
+    var scheduleEndTime = calendar.date(bySettingHour: 23, minute: 59, second: 0, of: now) ?? now
     // MARK: - 사용자가 설정한 앱/도메인을 담고 있는 멤버 변수
     @AppStorage("selection", store: UserDefaults(suiteName: Bundle.main.appGroupName))
     var selection = FamilyActivitySelection()
