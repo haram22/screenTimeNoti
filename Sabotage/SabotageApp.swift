@@ -14,13 +14,8 @@ struct ScreenTime_SabotageApp: App {
     @StateObject var scheduleVM = ScheduleVM()
     init() {
         Task {
-            // First, request Screen Time access.
             handleRequestAuthorization()
-            
-            // After Screen Time access has been granted, request notification permission.
             requestNotificationPermission()
-            
-            print("requestNotificationPermission")
         }
     }
     var body: some Scene {
