@@ -13,7 +13,6 @@ struct PermissionView: View {
     var body: some View {
         VStack(alignment: .center) {
             navigationHeaderLikeView()
-            decorationView()
             permissionButtonView()
         }
         .frame(
@@ -47,25 +46,6 @@ extension PermissionView {
         .padding(8)
         .frame(maxWidth: .infinity, maxHeight: 42, alignment: .trailing)
         .opacity(vm.isViewLoaded ? 1 : 0)
-    }
-    
-    private func decorationView() -> some View {
-        VStack(spacing: 12) {
-            Image(vm.DECORATION_TEXT_INFO.imgSrc)
-                .resizable()
-                .frame(width: 100, height: 100)
-            if vm.isViewLoaded {
-                Text(vm.DECORATION_TEXT_INFO.title)
-                    .font(.largeTitle)
-                    .foregroundColor(Color.yellow)
-                    .bold()
-                Text(vm.DECORATION_TEXT_INFO.subTitle)
-                    .font(.body)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.secondary)
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
     
     private func permissionButtonView() -> some View {

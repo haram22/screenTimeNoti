@@ -136,6 +136,7 @@
 		2169E82C2B3D795200A8DC07 /* ScheduleVMSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVMSU.swift; sourceTree = "<group>"; };
 		2169E82F2B3D79F400A8DC07 /* Bundle_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle_Extension.swift; sourceTree = "<group>"; };
 		2169E8312B3D7A6900A8DC07 /* ScreenTimeActivityReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeActivityReport.swift; sourceTree = "<group>"; };
+		2169E8332B3D958F00A8DC07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6FD33177F03DFB8AEC313974 /* Pods-Sabotage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.release.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.release.xcconfig"; sourceTree = "<group>"; };
 		8852C05C2B3C491600219714 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		8852C0602B3C4A7900219714 /* AnalysisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisVC.swift; sourceTree = "<group>"; };
@@ -220,6 +221,7 @@
 		214CC47F2B3C4782003B74EB /* Sabotage */ = {
 			isa = PBXGroup;
 			children = (
+				2169E8332B3D958F00A8DC07 /* Info.plist */,
 				2169E82E2B3D79E100A8DC07 /* Extension */,
 				2169E8202B3D773200A8DC07 /* Access */,
 				2169E7D22B3D74D300A8DC07 /* Sabotage.entitlements */,
@@ -853,6 +855,7 @@
 				DEVELOPMENT_TEAM = 3XQ8HFGAQN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sabotage/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -885,6 +888,7 @@
 				DEVELOPMENT_TEAM = 3XQ8HFGAQN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Sabotage/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
