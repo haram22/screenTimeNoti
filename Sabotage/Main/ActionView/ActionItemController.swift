@@ -5,6 +5,11 @@ class ActionItemController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        // "X" 버튼 추가
+        let closeButton = UIBarButtonItem(title: "X", style: .plain, target: self, action: #selector(closeButtonTapped))
+        closeButton.tintColor = .black
+        navigationItem.leftBarButtonItem = closeButton
+        
         let titleLabel = UILabel()
         titleLabel.text = "액션 아이템 생성"
         titleLabel.textAlignment = .center
@@ -34,7 +39,26 @@ class ActionItemController: UIViewController {
             actionButton.widthAnchor.constraint(equalToConstant: 350),
             actionButton.heightAnchor.constraint(equalToConstant: 80)
         ])
+        //
+        let backButton = UIButton(type: .system)
+        backButton.setTitle("이전", for: .normal)
+        backButton.setTitleColor(.systemGray, for: .normal)
+        backButton.backgroundColor = .systemGray4
+        backButton.layer.cornerRadius = 15
+        backButton.translatesAutoresizingMaskIntoConstraints = false
         
+        view.addSubview(backButton)
+        
+        NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -210),
+            backButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            backButton.heightAnchor.constraint(equalToConstant: 70)
+        ])
+        
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
+        //
         let nextButton = UIButton(type: .system)
         nextButton.setTitle("다음", for: .normal)
         nextButton.setTitleColor(.systemGray, for: .normal)
@@ -45,7 +69,7 @@ class ActionItemController: UIViewController {
         view.addSubview(nextButton)
         
         NSLayoutConstraint.activate([
-            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 210),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             nextButton.heightAnchor.constraint(equalToConstant: 70)
@@ -58,4 +82,14 @@ class ActionItemController: UIViewController {
         let addActionItemController = AddActionItemController()
         navigationController?.pushViewController(addActionItemController, animated: true)
     }
+    
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func closeButtonTapped() {
+        let gotoMainController = MainVC()
+        navigationController?.pushViewController(gotoMainController, animated: true)
+    }
+    
 }

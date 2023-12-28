@@ -1,14 +1,18 @@
-// LimitItemController.swift
-
 import UIKit
 
 class LimitItemController: UIViewController {
     
     let dailyBudgetButton = UIButton()
-    let countDownLabel = UILabel()
+    let countDownDatePicker = UIDatePicker()
+    var isDatePickerVisible = false
+    let timeLabel = UILabel()
     
     override func viewDidLoad() {
         view.backgroundColor = .white
+        
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
         
         let titleLabel = UILabel()
         titleLabel.text = "시간 제한 그룹 생성"
@@ -24,9 +28,9 @@ class LimitItemController: UIViewController {
         ])
         
         let inputName = UITextField()
-        inputName.placeholder = "Name"
+        inputName.placeholder = "그룹 이름"
         inputName.textColor = .black
-        inputName.font = UIFont.systemFont(ofSize: 24)
+        inputName.font = UIFont.systemFont(ofSize: 12)
         inputName.layer.cornerRadius = 15
         inputName.backgroundColor = .systemGray3
         view.addSubview(inputName)
@@ -39,10 +43,10 @@ class LimitItemController: UIViewController {
             inputName.heightAnchor.constraint(equalToConstant: 60)
         ])
         
-        let appButton = UITextField() // Change UIButton to UITextField
-        appButton.placeholder = "App" // Set placeholder text
+        let appButton = UITextField()
+        appButton.placeholder = "App"
         appButton.textColor = .black
-        appButton.font = UIFont.systemFont(ofSize: 24)
+        appButton.font = UIFont.systemFont(ofSize: 12)
         appButton.layer.cornerRadius = 15
         appButton.backgroundColor = .systemGray3
         view.addSubview(appButton)
@@ -55,14 +59,17 @@ class LimitItemController: UIViewController {
             appButton.heightAnchor.constraint(equalToConstant: 60)
         ])
                 
-        dailyBudgetButton.setTitle("Daily Budget", for: .normal)
-        dailyBudgetButton.setTitleColor(.black, for: .normal)
-        dailyBudgetButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        dailyBudgetButton.setTitle("하루 총 사용 시간", for: .normal)
+        dailyBudgetButton.setTitleColor(.systemGray, for: .normal)
+        dailyBudgetButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        dailyBudgetButton.contentHorizontalAlignment = .left
         dailyBudgetButton.layer.cornerRadius = 15
         dailyBudgetButton.backgroundColor = .systemGray3
+        dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
+        
         view.addSubview(dailyBudgetButton)
         dailyBudgetButton.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             dailyBudgetButton.topAnchor.constraint(equalTo: appButton.bottomAnchor, constant: 50),
             dailyBudgetButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
@@ -70,33 +77,101 @@ class LimitItemController: UIViewController {
             dailyBudgetButton.heightAnchor.constraint(equalToConstant: 60)
         ])
         
-        dailyBudgetButton.addTarget(self, action: #selector(startCountdownTimer), for: .touchUpInside)
+        // 버튼 탭 이벤트에 대한 액션 추가
+        dailyBudgetButton.addTarget(self, action: #selector(dailyBudgetButtonTapped), for: .touchUpInside)
+        
+        countDownDatePicker.datePickerMode = .countDownTimer
+        countDownDatePicker.backgroundColor = .systemGray3
+        countDownDatePicker.isHidden = true
+        view.addSubview(countDownDatePicker)
+                
+        countDownDatePicker.translatesAutoresizingMaskIntoConstraints = false
+        countDownDatePicker.topAnchor.constraint(equalTo: dailyBudgetButton.topAnchor, constant: 50).isActive = true
+        countDownDatePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        countDownDatePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        countDownDatePicker.heightAnchor.constraint(equalToConstant: 120).isActive = true // 초기 높이 0으로 설정
+        
+        countDownDatePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        
+        // countDownDatePicker에서 설정한 시간
+        view.addSubview(timeLabel)
+        timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        timeLabel.centerYAnchor.constraint(equalTo: dailyBudgetButton.centerYAnchor).isActive = true
+        timeLabel.topAnchor.constraint(equalTo: dailyBudgetButton.topAnchor, constant: 0).isActive = true
+        timeLabel.trailingAnchor.constraint(equalTo: dailyBudgetButton.trailingAnchor, constant: -20).isActive = true
+        timeLabel.textColor = .black
+        timeLabel.isHidden = true
     }
     
-    @objc func startCountdownTimer() {
-       let countDownLabel = UILabel()
-       countDownLabel.text = "Timer"
-       countDownLabel.textAlignment = .center
-       countDownLabel.font = UIFont.systemFont(ofSize: 24)
-       countDownLabel.translatesAutoresizingMaskIntoConstraints = false
-       view.addSubview(countDownLabel)
-
-       NSLayoutConstraint.activate([
-           countDownLabel.topAnchor.constraint(equalTo: dailyBudgetButton.bottomAnchor, constant: 50),
-           countDownLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-           countDownLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-           countDownLabel.heightAnchor.constraint(equalToConstant: 60)
-       ])
-
-        var countdownValue = 60
-        let timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            countdownValue -= 1
-            if countdownValue >= 0 {
-                self.countDownLabel.text = "\(countdownValue)"
-            } else {
-                timer.invalidate()
-                self.countDownLabel.text = "시간 초과!"
+    // dailyBudgetButton을 탭할 때 datePicker 표시/숨김 토글
+    @objc func showHideDatePicker() {
+        countDownDatePicker.isHidden = !countDownDatePicker.isHidden
+    }
+    
+    // 다른 곳을 탭했을 때 datePicker 숨기기
+    @objc func dismissDatePicker(sender: UITapGestureRecognizer) {
+        if !countDownDatePicker.isHidden {
+            let touchLocation = sender.location(in: self.view)
+            if !countDownDatePicker.frame.contains(touchLocation) {
+                countDownDatePicker.isHidden = true
             }
         }
-       }
+    }
+    
+    @objc func datePickerValueChanged() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH hours mm min"
+
+        let selectedDate = countDownDatePicker.date
+        let formattedDate = dateFormatter.string(from: selectedDate)
+
+        timeLabel.text = formattedDate
+    }
+    
+    @objc func dailyBudgetButtonTapped() {
+        isDatePickerVisible.toggle()
+
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            
+            // Update the visibility of the label with the selected time
+            self.timeLabel.isHidden = !self.isDatePickerVisible
+            
+            // Update the button's height constraint
+            self.dailyBudgetButton.constraints.forEach { constraint in
+                if constraint.firstAttribute == .height {
+                    constraint.isActive = false
+                }
+            }
+            self.dailyBudgetButton.heightAnchor.constraint(equalToConstant: self.isDatePickerVisible ? 200 : 60).isActive = true
+            
+            // Update the title label's position based on the button's height
+            if self.isDatePickerVisible {
+                self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -140, left: 10, bottom: 0, right: 0)
+            } else {
+                self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+            }
+
+            self.countDownDatePicker.isHidden = !self.isDatePickerVisible
+            self.view.bringSubviewToFront(self.countDownDatePicker) // 수정된 부분
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !countDownDatePicker.isHidden {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self = self else { return }
+                self.countDownDatePicker.isHidden = true
+                self.dailyBudgetButton.constraints.forEach { constraint in
+                    if constraint.firstAttribute == .height {
+                        constraint.isActive = false
+                    }
+                }
+                self.dailyBudgetButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+                self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 50)
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
 }

@@ -13,6 +13,11 @@ class AddActionItemController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        // "X" 버튼 추가
+        let closeButton = UIBarButtonItem(title: "X", style: .plain, target: self, action: #selector(closeButtonTapped))
+        closeButton.tintColor = .black
+        navigationItem.leftBarButtonItem = closeButton
+        
         // "명상" 텍스트를 보여줄 레이블 생성
         let meditationLabel = UILabel()
         meditationLabel.text = "명상"
@@ -61,6 +66,24 @@ class AddActionItemController: UIViewController {
             textField.widthAnchor.constraint(equalToConstant: 250)
         ])
         
+        let backButton = UIButton(type: .system)
+        backButton.setTitle("이전", for: .normal)
+        backButton.setTitleColor(.systemGray, for: .normal)
+        backButton.backgroundColor = .systemGray4
+        backButton.layer.cornerRadius = 15
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(backButton)
+        
+        NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -210),
+            backButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            backButton.heightAnchor.constraint(equalToConstant: 70)
+        ])
+        
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        
         let completeButton = UIButton(type: .system)
         completeButton.setTitle("완료", for: .normal)
         completeButton.setTitleColor(.black, for: .normal)
@@ -71,18 +94,29 @@ class AddActionItemController: UIViewController {
         view.addSubview(completeButton)
         
         NSLayoutConstraint.activate([
-            completeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            completeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 210),
             completeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             completeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             completeButton.heightAnchor.constraint(equalToConstant: 70)
         ])
         
         completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
+        
     }
     
     @objc func completeButtonTapped() {
         let saveActionItemController = SaveActionItemController()
         navigationController?.pushViewController(saveActionItemController, animated: true)
+    }
+    
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // "X" 버튼 액션
+    @objc func closeButtonTapped() {
+        let gotoMainController = MainVC()
+        navigationController?.pushViewController(gotoMainController, animated: true)
     }
 }
 

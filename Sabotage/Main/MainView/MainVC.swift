@@ -13,6 +13,13 @@ class MainVC: UIViewController {
         
         view.backgroundColor = .white
         
+        // 이전 화면으로 돌아가는 "< Back" 버튼 숨기기
+        navigationItem.hidesBackButton = true
+        
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil) // title 부분 수정
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+        
         // UISegmentedControl (토글) 설정
         segmentedControl.insertSegment(withTitle: "액션 아이템", at: 0, animated: false)
         segmentedControl.insertSegment(withTitle: "제한 서비스", at: 1, animated: false)
