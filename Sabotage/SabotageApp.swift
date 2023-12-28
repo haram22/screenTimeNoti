@@ -22,7 +22,6 @@ struct ScreenTime_BarebonesApp: App {
                 // MARK: - ram 권한에 대한 조건 설정
                 if !familyControlsManager.hasScreenTimePermission {
                     PermissionView()
-                    
                 } else {
                     ContentView()
                 }
