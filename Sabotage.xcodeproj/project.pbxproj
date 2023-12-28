@@ -32,12 +32,15 @@
 		2169E82D2B3D795200A8DC07 /* ScheduleVMSU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E82C2B3D795200A8DC07 /* ScheduleVMSU.swift */; };
 		2169E8302B3D79F400A8DC07 /* Bundle_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E82F2B3D79F400A8DC07 /* Bundle_Extension.swift */; };
 		2169E8322B3D7A6900A8DC07 /* ScreenTimeActivityReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E8312B3D7A6900A8DC07 /* ScreenTimeActivityReport.swift */; };
+		2169E8352B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E8342B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift */; };
+		2169E8372B3DD3A600A8DC07 /* ScreenTimeVMSU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E8362B3DD3A600A8DC07 /* ScreenTimeVMSU.swift */; };
+		2169E8392B3DD42C00A8DC07 /* AppStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E8382B3DD42C00A8DC07 /* AppStorageManager.swift */; };
 		8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C05C2B3C491600219714 /* ProfileVC.swift */; };
 		8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0602B3C4A7900219714 /* AnalysisVC.swift */; };
 		8852C0652B3C4AB300219714 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0642B3C4AB300219714 /* MainVC.swift */; };
 		8852C0692B3C4B1300219714 /* ActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0682B3C4B1300219714 /* ActionItemController.swift */; };
 		8852C06B2B3C4B2800219714 /* AddActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C06A2B3C4B2800219714 /* AddActionItemController.swift */; };
-		8852C06D2B3C4B5C00219714 /* LimitItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C06C2B3C4B5C00219714 /* LimitItemController.swift */; };
+		8852C06D2B3C4B5C00219714 /* LimitItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C06C2B3C4B5C00219714 /* LimitItemVC.swift */; };
 		88637AB72B3C70ED006F1FF6 /* SaveActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88637AB62B3C70ED006F1FF6 /* SaveActionItemController.swift */; };
 		B692A2FC62489F454D08916D /* Pods_Sabotage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D54989E361DB14E3DA0ACBD /* Pods_Sabotage.framework */; };
 /* End PBXBuildFile section */
@@ -137,13 +140,16 @@
 		2169E82F2B3D79F400A8DC07 /* Bundle_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle_Extension.swift; sourceTree = "<group>"; };
 		2169E8312B3D7A6900A8DC07 /* ScreenTimeActivityReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeActivityReport.swift; sourceTree = "<group>"; };
 		2169E8332B3D958F00A8DC07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2169E8342B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectLimitAppVMSU.swift; path = ScreenTimeReport/SelectLimitAppVMSU.swift; sourceTree = SOURCE_ROOT; };
+		2169E8362B3DD3A600A8DC07 /* ScreenTimeVMSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeVMSU.swift; sourceTree = "<group>"; };
+		2169E8382B3DD42C00A8DC07 /* AppStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageManager.swift; sourceTree = "<group>"; };
 		6FD33177F03DFB8AEC313974 /* Pods-Sabotage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.release.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.release.xcconfig"; sourceTree = "<group>"; };
 		8852C05C2B3C491600219714 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		8852C0602B3C4A7900219714 /* AnalysisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisVC.swift; sourceTree = "<group>"; };
 		8852C0642B3C4AB300219714 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		8852C0682B3C4B1300219714 /* ActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionItemController.swift; sourceTree = "<group>"; };
 		8852C06A2B3C4B2800219714 /* AddActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionItemController.swift; sourceTree = "<group>"; };
-		8852C06C2B3C4B5C00219714 /* LimitItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LimitItemController.swift; path = "Sabotage/Preview Content/LimitItemController.swift"; sourceTree = SOURCE_ROOT; };
+		8852C06C2B3C4B5C00219714 /* LimitItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LimitItemVC.swift; path = "Sabotage/Preview Content/LimitItemVC.swift"; sourceTree = SOURCE_ROOT; };
 		88637AB62B3C70ED006F1FF6 /* SaveActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionItemController.swift; sourceTree = "<group>"; };
 		B67E6903597848D8825D1C81 /* Pods-Sabotage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.debug.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -301,6 +307,7 @@
 			children = (
 				2169E8212B3D778600A8DC07 /* FamilyControlManager.swift */,
 				2169E8232B3D787500A8DC07 /* DeviceActivtyManager.swift */,
+				2169E8382B3DD42C00A8DC07 /* AppStorageManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -311,6 +318,7 @@
 				2169E82A2B3D793800A8DC07 /* PermissionVMSU.swift */,
 				2169E82C2B3D795200A8DC07 /* ScheduleVMSU.swift */,
 				2169E8272B3D78C100A8DC07 /* PermissionViewSU.swift */,
+				2169E8362B3DD3A600A8DC07 /* ScreenTimeVMSU.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -386,7 +394,8 @@
 		8852C0672B3C4ADC00219714 /* LimitView */ = {
 			isa = PBXGroup;
 			children = (
-				8852C06C2B3C4B5C00219714 /* LimitItemController.swift */,
+				8852C06C2B3C4B5C00219714 /* LimitItemVC.swift */,
+				2169E8342B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift */,
 			);
 			path = LimitView;
 			sourceTree = "<group>";
@@ -643,6 +652,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2169E8372B3DD3A600A8DC07 /* ScreenTimeVMSU.swift in Sources */,
 				8852C0692B3C4B1300219714 /* ActionItemController.swift in Sources */,
 				2169E8222B3D778600A8DC07 /* FamilyControlManager.swift in Sources */,
 				8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */,
@@ -651,12 +661,14 @@
 				2169E82D2B3D795200A8DC07 /* ScheduleVMSU.swift in Sources */,
 				2169E8302B3D79F400A8DC07 /* Bundle_Extension.swift in Sources */,
 				8852C0652B3C4AB300219714 /* MainVC.swift in Sources */,
+				2169E8392B3DD42C00A8DC07 /* AppStorageManager.swift in Sources */,
 				8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */,
 				214CC4832B3C4782003B74EB /* ContentView.swift in Sources */,
 				214CC4812B3C4782003B74EB /* SabotageApp.swift in Sources */,
-				8852C06D2B3C4B5C00219714 /* LimitItemController.swift in Sources */,
+				8852C06D2B3C4B5C00219714 /* LimitItemVC.swift in Sources */,
 				2169E82B2B3D793800A8DC07 /* PermissionVMSU.swift in Sources */,
 				2169E8242B3D787500A8DC07 /* DeviceActivtyManager.swift in Sources */,
+				2169E8352B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift in Sources */,
 				8852C06B2B3C4B2800219714 /* AddActionItemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
