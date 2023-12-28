@@ -6,12 +6,45 @@
 //
 
 import SwiftUI
+import FamilyControls
 
 @main
-struct SabotageApp: App {
+struct ScreenTime_BarebonesApp: App {
+    @StateObject var familyControlsManager = FamilyControlsManager.shared
+    @StateObject var scheduleVM = ScheduleVM()
+    init() {
+            requestNotificationPermission()
+        print("requestNotificationPermission")
+        }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VStack {
+                // MARK: - ram 권한에 대한 조건 설정
+                if !familyControlsManager.hasScreenTimePermission {
+                    PermissionView()
+                    
+                } else {
+                    ContentView()
+                }
+            }
+            .onReceive(familyControlsManager.authorizationCenter.$authorizationStatus) { newValue in
+                // here
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    familyControlsManager.updateAuthorizationStatus(authStatus: newValue)
+                }
+            }
+            .environmentObject(familyControlsManager)
+            .environmentObject(scheduleVM)
+        }
+    }
+}
+
+func requestNotificationPermission() {
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        if granted {
+            print("Notification Permission Granted.")
+        } else {
+            print("Notification Permission Denied.")
         }
     }
 }
