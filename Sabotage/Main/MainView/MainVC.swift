@@ -1,6 +1,8 @@
 //MainVC.swift
 
 import UIKit
+import SnapKit
+import Then
 
 class MainVC: UIViewController {
     var segmentedControl = UISegmentedControl()
@@ -8,10 +10,17 @@ class MainVC: UIViewController {
     var addButton = UIButton(type: .system)
     var tabBar = UITabBar()
     
+    var pieChartViewController: PieChart!
+    var firstButton = UIButton(type: .system)
+    var secondButton = UIButton(type: .system)
+    var thirdButton = UIButton(type: .system)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        
+        piechartUI()
         
         // 이전 화면으로 돌아가는 "< Back" 버튼 숨기기
         navigationItem.hidesBackButton = true
@@ -93,6 +102,62 @@ class MainVC: UIViewController {
         // Set UITabBarItems to the UITabBar
         tabBar.setItems([homeItem, analysisItem, profileItem], animated: false)
     }
+    
+    func piechartUI() {
+            pieChartViewController = PieChart()
+            addChild(pieChartViewController)
+            view.addSubview(pieChartViewController.view)
+            pieChartViewController.didMove(toParent: self)
+
+            // Buttons
+            firstButton.setTitle("First", for: .normal)
+            secondButton.setTitle("Second", for: .normal)
+            thirdButton.setTitle("Third", for: .normal)
+            
+            firstButton.addTarget(self, action: #selector(firstButtonTapped), for: .touchUpInside)
+            secondButton.addTarget(self, action: #selector(secondButtonTapped), for: .touchUpInside)
+            thirdButton.addTarget(self, action: #selector(thirdButtonTapped), for: .touchUpInside)
+
+            [firstButton, secondButton, thirdButton].forEach {
+                view.addSubview($0)
+                $0.translatesAutoresizingMaskIntoConstraints = false
+            }
+            
+            // Set constraints for the PieChart view and buttons using SnapKit
+            pieChartViewController.view.snp.makeConstraints {
+                $0.top.equalToSuperview().offset(30) // 10만큼 내려감
+                $0.leading.trailing.equalToSuperview()
+//                $0.height.equalTo(160) // 이거 땜에 에러 뜸
+            }
+            
+            firstButton.snp.makeConstraints {
+                $0.top.equalTo(pieChartViewController.view.snp.bottom).offset(-50)
+                $0.leading.equalToSuperview().offset(80)
+            }
+            
+            secondButton.snp.makeConstraints {
+                $0.top.equalTo(pieChartViewController.view.snp.bottom).offset(-50)
+                $0.centerX.equalToSuperview()
+            }
+            
+            thirdButton.snp.makeConstraints {
+                $0.top.equalTo(pieChartViewController.view.snp.bottom).offset(-50)
+                $0.trailing.equalToSuperview().offset(-80)
+            }
+        }
+
+    @objc func firstButtonTapped() {
+        pieChartViewController.firstAppUI()
+    }
+
+    @objc func secondButtonTapped() {
+        pieChartViewController.secondAppUI()
+    }
+
+    @objc func thirdButtonTapped() {
+        pieChartViewController.thirdAppUI()
+    }
+
     
     // 토글 선택 시 상황
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
