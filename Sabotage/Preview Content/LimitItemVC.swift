@@ -63,6 +63,34 @@ class LimitItemController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
         }
+
+        
+//         inputName.then {
+//             $0.placeholder = "그룹 이름"
+//             $0.textColor = .black
+//             $0.font = UIFont.systemFont(ofSize: 18)
+//             $0.layer.cornerRadius = 15
+//             $0.backgroundColor = .systemGray3
+//             contentView.addSubview($0)
+//         }.snp.makeConstraints { make in
+//             make.top.equalToSuperview().offset(40)
+//             make.leading.equalToSuperview().offset(30)
+//             make.trailing.equalToSuperview().offset(-30)
+//             make.height.equalTo(60)
+//         }
+        
+//         errorLabel.then {
+//             $0.textColor = .red
+//             $0.textAlignment = .left
+//             $0.font = UIFont.systemFont(ofSize: 14)
+//             $0.translatesAutoresizingMaskIntoConstraints = false
+//             contentView.addSubview($0)
+//         }.snp.makeConstraints { make in
+//             make.top.equalTo(inputName.snp.bottom).offset(8)
+//             make.leading.equalTo(inputName.snp.leading)
+//             make.trailing.equalTo(inputName.snp.trailing)
+//         }
+
         
         inputName.then {
             $0.placeholder = "그룹 이름"
@@ -72,7 +100,7 @@ class LimitItemController: UIViewController {
             $0.backgroundColor = .systemGray3
             contentView.addSubview($0)
         }.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(40)
+            make.top.equalToSuperview().offset(50)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
             make.height.equalTo(60)
@@ -89,7 +117,7 @@ class LimitItemController: UIViewController {
             make.leading.equalTo(inputName.snp.leading)
             make.trailing.equalTo(inputName.snp.trailing)
         }
-        
+
         // MARK: - SwiftUi 코드
         hostingController.view.then {
             contentView.addSubview($0)
@@ -135,7 +163,11 @@ class LimitItemController: UIViewController {
             $0.isHidden = true
             contentView.addSubview($0)
         }.snp.makeConstraints { make in
-            make.centerY.equalTo(dailyBudgetButton.snp.centerY).offset(-70) // ===================
+
+//             make.centerY.equalTo(dailyBudgetButton.snp.centerY).offset(-70) // ===================
+
+            make.centerY.equalTo(dailyBudgetButton.snp.centerY)
+
             make.top.equalTo(dailyBudgetButton.snp.top)
             make.trailing.equalTo(dailyBudgetButton.snp.trailing).inset(20)
         }
@@ -161,7 +193,9 @@ class LimitItemController: UIViewController {
             $0.contentHorizontalAlignment = .left
             $0.layer.cornerRadius = 15
             $0.backgroundColor = .systemGray3
+
             $0.titleEdgeInsets = UIEdgeInsets(top: -50, left: 10, bottom: 0, right: 50)
+
             $0.addTarget(self, action: #selector(nudgeButtonTapped), for: .touchUpInside)
             contentView.addSubview($0)
         }.snp.makeConstraints {
@@ -189,13 +223,18 @@ class LimitItemController: UIViewController {
             $0.isHidden = true
             contentView.addSubview($0)
         }.snp.makeConstraints { make in
-            make.centerY.equalTo(nudgeButton).offset(-70)
+
+//             make.centerY.equalTo(nudgeButton).offset(-70)
+
+            make.centerY.equalTo(nudgeButton)
             make.top.equalTo(nudgeButton.snp.top)
             make.trailing.equalTo(nudgeButton.snp.trailing).inset(20)
         }
         
         nudgeInfoLabel.then {
+
             $0.text = "무한 스크롤링에서 벗어나 앱을 탈출할 신호를 보내줄게요!\n알람 간격을 설정해주세요!"
+
             $0.textColor = .systemGray
             $0.font = UIFont.systemFont(ofSize: 14)
             $0.textAlignment = .left
@@ -220,6 +259,24 @@ class LimitItemController: UIViewController {
             make.trailing.equalToSuperview().inset(20)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(30)
             make.height.equalTo(70)
+
+        }
+        
+    }
+    
+    // dailyBudgetButton을 탭할 때 datePicker 표시/숨김 토글
+    @objc func showHideDatePicker() {
+        countDownDatePicker.isHidden = !countDownDatePicker.isHidden
+    }
+    
+    // 다른 곳을 탭했을 때 datePicker 숨기기
+    @objc func dismissDatePicker(sender: UITapGestureRecognizer) {
+        if !countDownDatePicker.isHidden {
+            let touchLocation = sender.location(in: self.view)
+            if !countDownDatePicker.frame.contains(touchLocation) {
+                countDownDatePicker.isHidden = true
+            }
+
         }
         
     }
@@ -256,11 +313,61 @@ class LimitItemController: UIViewController {
             }
             
             self.countDownDatePicker.isHidden = !self.isDatePickerVisible
-            self.view.bringSubviewToFront(self.countDownDatePicker)
+
+            self.view.bringSubviewToFront(self.countDownDatePicker) // 수정된 부분
             self.view.layoutIfNeeded()
         }
     }
     
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        let location = touch?.location(in: self.view)
+        
+        // Check if countDownDatePicker2 is visible and touch location is outside of it
+        if !countDownDatePicker2.isHidden, let loc = location, !countDownDatePicker2.frame.contains(loc) {
+            hideCountDownDatePicker2()
+        }
+        
+        // If countDownDatePicker is visible, handle its logic
+        if !countDownDatePicker.isHidden {
+            hideCountDownDatePicker()
+        }
+    }
+    
+    func hideCountDownDatePicker() {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            self.countDownDatePicker.isHidden = true
+            self.dailyBudgetButton.constraints.forEach { constraint in
+                if constraint.firstAttribute == .height {
+                    constraint.isActive = false
+                }
+            }
+            self.dailyBudgetButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -50, left: 10, bottom: 0, right: 50)
+
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+
+    func hideCountDownDatePicker2() {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let self = self else { return }
+            self.countDownDatePicker2.isHidden = true
+            self.nudgeButton.constraints.forEach { constraint in
+                if constraint.firstAttribute == .height {
+                    constraint.isActive = false
+                }
+            }
+            self.nudgeButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            self.nudgeButton.titleEdgeInsets = UIEdgeInsets(top: -50, left: 10, bottom: 0, right: 50)
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+
     
     // ==================================
     
@@ -312,7 +419,7 @@ class LimitItemController: UIViewController {
     // "완료" 버튼 클릭 시
     @objc func completeButtonTapped() {
         // Check if inputName meets the character limit
-        if let text = inputName.text, !text.isEmpty, text.count <= 10 {
+        if let text = inputName.text, !text.isEmpty, text.count <= 3 {
             // If it's within the limit, proceed to the MainVC
             let completeActionItemController = MainVC()
             navigationController?.pushViewController(completeActionItemController, animated: true)
@@ -320,7 +427,7 @@ class LimitItemController: UIViewController {
             errorLabel.isHidden = true
         } else {
             // If it exceeds the limit, show an error message and display the error label
-            errorLabel.text = "10자 이내로 작성해주세요"
+            errorLabel.text = "3자 이내로 작성해주세요"
             errorLabel.isHidden = false
         }
         print("그룹 이름 : \(String(describing: inputName.text))")
@@ -395,3 +502,4 @@ extension LimitItemController {
         inputName.delegate = self
     }
 }
+

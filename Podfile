@@ -7,6 +7,7 @@ target 'Sabotage' do
 pod 'SnapKit'
 pod 'Then'
 pod 'RKPieChart'
+pod 'RealmSwift'
 
   # Pods for Sabotage
 

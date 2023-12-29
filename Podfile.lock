@@ -1,16 +1,24 @@
 PODS:
   - RKPieChart (0.0.1)
+  - Realm (10.45.2):
+    - Realm/Headers (= 10.45.2)
+  - Realm/Headers (10.45.2)
+  - RealmSwift (10.45.2):
+    - Realm (= 10.45.2)
   - SnapKit (5.6.0)
   - Then (3.0.0)
 
 DEPENDENCIES:
   - RKPieChart
+  - RealmSwift
   - SnapKit
   - Then
 
 SPEC REPOS:
   trunk:
     - RKPieChart
+    - Realm
+    - RealmSwift
     - SnapKit
     - Then
 
@@ -20,5 +28,11 @@ SPEC CHECKSUMS:
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
 PODFILE CHECKSUM: ddee38773fd2233677039f58e9bbab06e6d51c7c
+  Realm: bc4fc31783a0b3e355edca05f167f6a49c544dc2
+  RealmSwift: 234003b5fdb187c4b439d478662636d62a1f9de0
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+
+PODFILE CHECKSUM: 984022d59ea838647350256605d32e9679ecf95e
 
 COCOAPODS: 1.14.3
