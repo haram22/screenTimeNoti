@@ -1,4 +1,6 @@
 import UIKit
+import SnapKit
+import Then
 
 class ActionItemController: UIViewController {
     
@@ -13,67 +15,65 @@ class ActionItemController: UIViewController {
     let eButton = UIButton(type: .system)
     
     var selectedRadioButton: UIButton?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        setUI()
-        setConstraint()
+        setupUI()
+        setConstraints()
         setButtonUI()
-        setButtonConstraint()
+        setButtonConstraints()
         setRadioButtonUI()
     }
     
-    func setUI() {
-        titleLabel.text = "액션 아이템 생성"
-        titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(titleLabel)
+    func setupUI() {
+        view.addSubview(titleLabel.then {
+            $0.text = "액션 아이템 생성"
+            $0.textAlignment = .center
+            $0.font = UIFont.boldSystemFont(ofSize: 20)
+        })
         
-        backButton.setTitle("이전", for: .normal)
-        backButton.setTitleColor(.systemGray, for: .normal)
-        backButton.backgroundColor = .systemGray4
-        backButton.layer.cornerRadius = 15
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(backButton)
-        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        view.addSubview(backButton.then {
+            $0.setTitle("이전", for: .normal)
+            $0.setTitleColor(.systemGray, for: .normal)
+            $0.backgroundColor = .systemGray4
+            $0.layer.cornerRadius = 15
+            $0.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        })
         
-        nextButton.setTitle("다음", for: .normal)
-        nextButton.setTitleColor(.systemGray, for: .normal)
-        nextButton.backgroundColor = .systemGray4
-        nextButton.layer.cornerRadius = 15
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(nextButton)
-        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        view.addSubview(nextButton.then {
+            $0.setTitle("다음", for: .normal)
+            $0.setTitleColor(.systemGray, for: .normal)
+            $0.backgroundColor = .systemGray4
+            $0.layer.cornerRadius = 15
+            $0.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
+        })
         
-        // MARK: 메인으로 가는 버튼
         let closeButton = UIBarButtonItem(title: "X", style: .plain, target: self, action: #selector(closeButtonTapped))
         closeButton.tintColor = .black
         navigationItem.leftBarButtonItem = closeButton
     }
     
-    func setConstraint() {
-        NSLayoutConstraint.activate([
-            
-            // MARK: "액션 아이템 생성"
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            // MARK: "이전" 버튼
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            backButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -210),
-            backButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            backButton.heightAnchor.constraint(equalToConstant: 70),
- 
-            // MARK: "다음" 버튼
-            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 210),
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nextButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            nextButton.heightAnchor.constraint(equalToConstant: 70)
-        ])
+    func setConstraints() {
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        backButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalToSuperview().offset(-210)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            $0.height.equalTo(70)
+        }
+        
+        nextButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(210)
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-20)
+            $0.height.equalTo(70)
+        }
     }
     
     func setButtonUI() {
@@ -81,55 +81,52 @@ class ActionItemController: UIViewController {
         let buttonTitles = ["A", "B", "C", "D", "E"]
         
         for (index, button) in buttons.enumerated() {
-            button.setTitle(buttonTitles[index], for: .normal)
-            button.setTitleColor(.black, for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 24)
-            button.layer.cornerRadius = 15
-            button.backgroundColor = .systemGray3
-            view.addSubview(button)
-            button.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(button.then {
+                $0.setTitle(buttonTitles[index], for: .normal)
+                $0.setTitleColor(.black, for: .normal)
+                $0.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+                $0.layer.cornerRadius = 15
+                $0.backgroundColor = .systemGray3
+            })
         }
     }
-
     
-    func setButtonConstraint() {
-       
+    func setButtonConstraints() {
         let allButtons = [aButton, bButton, cButton, dButton, eButton]
-                
+        
         for (index, button) in allButtons.enumerated() {
-            var topAnchor: NSLayoutYAxisAnchor
+            var topAnchor: ConstraintItem
             if index == 0 {
-                topAnchor = view.safeAreaLayoutGuide.topAnchor
+                topAnchor = view.safeAreaLayoutGuide.snp.top
             } else {
-                topAnchor = allButtons[index - 1].bottomAnchor
+                topAnchor = allButtons[index - 1].snp.bottom
             }
             
-            NSLayoutConstraint.activate([
-                button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                button.topAnchor.constraint(equalTo: topAnchor, constant: index == 0 ? 20 : 40),
-                button.widthAnchor.constraint(equalToConstant: 350),
-                button.heightAnchor.constraint(equalToConstant: 80)
-            ])
+            button.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+                $0.top.equalTo(topAnchor).offset(index == 0 ? 20 : 40)
+                $0.width.equalTo(350)
+                $0.height.equalTo(80)
+            }
         }
     }
     
     func setRadioButtonUI() {
         let buttons = [aButton, bButton, cButton, dButton, eButton]
         for button in buttons {
-            let radioButton = UIButton(type: .system)
-            radioButton.setImage(UIImage(systemName: "circle"), for: .normal)
-            radioButton.setImage(UIImage(systemName: "largecircle.fill.circle"), for: .selected)
-            radioButton.tintColor = .systemBlue
-            radioButton.isUserInteractionEnabled = false
-            radioButton.translatesAutoresizingMaskIntoConstraints = false
+            let radioButton = UIButton(type: .system).then {
+                $0.setImage(UIImage(systemName: "circle"), for: .normal)
+                $0.setImage(UIImage(systemName: "largecircle.fill.circle"), for: .selected)
+                $0.tintColor = .systemBlue
+                $0.isUserInteractionEnabled = false
+            }
             button.addSubview(radioButton)
             
-            NSLayoutConstraint.activate([
-                radioButton.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -10),
-                radioButton.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-                radioButton.widthAnchor.constraint(equalToConstant: 20),
-                radioButton.heightAnchor.constraint(equalToConstant: 20)
-            ])
+            radioButton.snp.makeConstraints {
+                $0.trailing.equalTo(button.snp.trailing).offset(-10)
+                $0.centerY.equalTo(button.snp.centerY)
+                $0.width.height.equalTo(20)
+            }
             
             button.addTarget(self, action: #selector(radioButtonTapped(_:)), for: .touchUpInside)
         }

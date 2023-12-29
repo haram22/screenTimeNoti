@@ -6,6 +6,7 @@ target 'Sabotage' do
   use_frameworks!
 pod 'SnapKit'
 pod 'Then'
+pod 'RKPieChart'
 pod 'RealmSwift'
 
   # Pods for Sabotage

@@ -63,6 +63,34 @@ class LimitItemController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
         }
+
+        
+//         inputName.then {
+//             $0.placeholder = "그룹 이름"
+//             $0.textColor = .black
+//             $0.font = UIFont.systemFont(ofSize: 18)
+//             $0.layer.cornerRadius = 15
+//             $0.backgroundColor = .systemGray3
+//             contentView.addSubview($0)
+//         }.snp.makeConstraints { make in
+//             make.top.equalToSuperview().offset(40)
+//             make.leading.equalToSuperview().offset(30)
+//             make.trailing.equalToSuperview().offset(-30)
+//             make.height.equalTo(60)
+//         }
+        
+//         errorLabel.then {
+//             $0.textColor = .red
+//             $0.textAlignment = .left
+//             $0.font = UIFont.systemFont(ofSize: 14)
+//             $0.translatesAutoresizingMaskIntoConstraints = false
+//             contentView.addSubview($0)
+//         }.snp.makeConstraints { make in
+//             make.top.equalTo(inputName.snp.bottom).offset(8)
+//             make.leading.equalTo(inputName.snp.leading)
+//             make.trailing.equalTo(inputName.snp.trailing)
+//         }
+
         
         inputName.then {
             $0.placeholder = "그룹 이름"
@@ -89,6 +117,7 @@ class LimitItemController: UIViewController {
             make.leading.equalTo(inputName.snp.leading)
             make.trailing.equalTo(inputName.snp.trailing)
         }
+
         // MARK: - SwiftUi 코드
         hostingController.view.then {
             contentView.addSubview($0)
@@ -106,7 +135,7 @@ class LimitItemController: UIViewController {
             $0.contentHorizontalAlignment = .left
             $0.layer.cornerRadius = 15
             $0.backgroundColor = .systemGray3
-            $0.titleEdgeInsets = UIEdgeInsets(top: -50, left: 5, bottom: 0, right: 50)
+            $0.titleEdgeInsets = UIEdgeInsets(top: -50, left: 10, bottom: 0, right: 0)
             $0.addTarget(self, action: #selector(dailyBudgetButtonTapped), for: .touchUpInside)
             contentView.addSubview($0)
         }.snp.makeConstraints {
@@ -134,7 +163,11 @@ class LimitItemController: UIViewController {
             $0.isHidden = true
             contentView.addSubview($0)
         }.snp.makeConstraints { make in
+
+//             make.centerY.equalTo(dailyBudgetButton.snp.centerY).offset(-70) // ===================
+
             make.centerY.equalTo(dailyBudgetButton.snp.centerY)
+
             make.top.equalTo(dailyBudgetButton.snp.top)
             make.trailing.equalTo(dailyBudgetButton.snp.trailing).inset(20)
         }
@@ -160,7 +193,9 @@ class LimitItemController: UIViewController {
             $0.contentHorizontalAlignment = .left
             $0.layer.cornerRadius = 15
             $0.backgroundColor = .systemGray3
-            $0.titleEdgeInsets = UIEdgeInsets(top: -50, left: 5, bottom: 0, right: 50)
+
+            $0.titleEdgeInsets = UIEdgeInsets(top: -50, left: 10, bottom: 0, right: 50)
+
             $0.addTarget(self, action: #selector(nudgeButtonTapped), for: .touchUpInside)
             contentView.addSubview($0)
         }.snp.makeConstraints {
@@ -188,13 +223,18 @@ class LimitItemController: UIViewController {
             $0.isHidden = true
             contentView.addSubview($0)
         }.snp.makeConstraints { make in
+
+//             make.centerY.equalTo(nudgeButton).offset(-70)
+
             make.centerY.equalTo(nudgeButton)
             make.top.equalTo(nudgeButton.snp.top)
             make.trailing.equalTo(nudgeButton.snp.trailing).inset(20)
         }
         
         nudgeInfoLabel.then {
-            $0.text = "무한 스크롤링에서 벗어나 앱을 탈출할 신호를 보내줄게요! 알람 간격을 설정해주세요!"
+
+            $0.text = "무한 스크롤링에서 벗어나 앱을 탈출할 신호를 보내줄게요!\n알람 간격을 설정해주세요!"
+
             $0.textColor = .systemGray
             $0.font = UIFont.systemFont(ofSize: 14)
             $0.textAlignment = .left
@@ -219,6 +259,7 @@ class LimitItemController: UIViewController {
             make.trailing.equalToSuperview().inset(20)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(30)
             make.height.equalTo(70)
+
         }
         
     }
@@ -235,7 +276,9 @@ class LimitItemController: UIViewController {
             if !countDownDatePicker.frame.contains(touchLocation) {
                 countDownDatePicker.isHidden = true
             }
+
         }
+        
     }
     
     // 앱 하루 총 사용 시간
@@ -259,26 +302,18 @@ class LimitItemController: UIViewController {
         
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
-            
-            // Update the visibility of the label with the selected time
-            self.timeLabel.isHidden = !self.isDatePickerVisible
-            
-            // Update the button's height constraint
-            self.dailyBudgetButton.constraints.forEach { constraint in
-                if constraint.firstAttribute == .height {
-                    constraint.isActive = false
-                }
-            }
+
             self.dailyBudgetButton.heightAnchor.constraint(equalToConstant: self.isDatePickerVisible ? 200 : 100).isActive = true
             
             // Update the title label's position based on the button's height
             if self.isDatePickerVisible {
                 self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -140, left: 10, bottom: 0, right: 0)
             } else {
-                self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -50, left: 10, bottom: 0, right: 0)
+                self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -70, left: 10, bottom: 0, right: 0)
             }
             
             self.countDownDatePicker.isHidden = !self.isDatePickerVisible
+
             self.view.bringSubviewToFront(self.countDownDatePicker) // 수정된 부분
             self.view.layoutIfNeeded()
         }
@@ -311,10 +346,12 @@ class LimitItemController: UIViewController {
             }
             self.dailyBudgetButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
             self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -50, left: 10, bottom: 0, right: 50)
+
             self.view.layoutIfNeeded()
         }
     }
     
+
     func hideCountDownDatePicker2() {
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
@@ -330,6 +367,7 @@ class LimitItemController: UIViewController {
         }
     }
     
+
     
     // ==================================
     
@@ -408,6 +446,48 @@ extension LimitItemController: UITextFieldDelegate {
  
 
 extension LimitItemController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        
+        let touchLocation = touch.location(in: view)
+        
+        if !countDownDatePicker.frame.contains(touchLocation) && !countDownDatePicker2.frame.contains(touchLocation) && !dailyBudgetButton.frame.contains(touchLocation) {
+            // If the touch is outside both date pickers and dailyBudgetButton, hide them
+            isDatePickerVisible = false
+            isDatePickerVisible2 = false
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.dailyBudgetButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+                self?.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -70, left: 10, bottom: 0, right: 0)
+                self?.countDownDatePicker.isHidden = true
+                self?.countDownDatePicker2.isHidden = true
+                self?.view.layoutIfNeeded()
+            }
+        } else if !countDownDatePicker.frame.contains(touchLocation) && !dailyBudgetButton.frame.contains(touchLocation) {
+            // If the touch is outside countDownDatePicker and dailyBudgetButton, hide countDownDatePicker
+            isDatePickerVisible = false
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.dailyBudgetButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+                self?.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -70, left: 10, bottom: 0, right: 0)
+                self?.countDownDatePicker.isHidden = true
+                self?.view.layoutIfNeeded()
+            }
+        } else if !countDownDatePicker2.frame.contains(touchLocation) && !dailyBudgetButton.frame.contains(touchLocation) {
+            // If the touch is outside countDownDatePicker2 and dailyBudgetButton, hide countDownDatePicker2
+            isDatePickerVisible2 = false
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.dailyBudgetButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
+                self?.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -70, left: 10, bottom: 0, right: 0)
+                self?.countDownDatePicker2.isHidden = true
+                self?.view.layoutIfNeeded()
+            }
+        }
+
+    }
+    
+    
     func setupTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGesture.cancelsTouchesInView = false
