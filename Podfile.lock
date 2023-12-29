@@ -1,20 +1,35 @@
 PODS:
+
+  - RKPieChart (0.0.1)
+
   - SnapKit (5.6.0)
   - Then (3.0.0)
 
 DEPENDENCIES:
+
+  - RKPieChart
+
   - SnapKit
   - Then
 
 SPEC REPOS:
   trunk:
+
+    - RKPieChart
+
     - SnapKit
     - Then
 
 SPEC CHECKSUMS:
+
+  RKPieChart: 8e643c505d24e61574f3a2fd6bd807403840b24b
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+
+
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
 PODFILE CHECKSUM: f4422b71c58cfdef6f9c1d41aa4cc816cb81ca46
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.14.3
