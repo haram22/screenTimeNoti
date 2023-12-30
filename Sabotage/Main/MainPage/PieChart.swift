@@ -43,7 +43,7 @@ class PieChart: UIViewController {
         
         chartView.removeFromSuperview() // 기존의 파이 차트 지우기
         
-        let singleItem = RKPieChartItem(ratio: 50, color: UIColor.green, title: "1th Item")
+        let singleItem = RKPieChartItem(ratio: 80, color: UIColor.green, title: "1th Item")
         
         chartView = RKPieChartView(items: [singleItem], centerTitle: "First App")
         chartView.circleColor = .systemGreen
@@ -67,7 +67,7 @@ class PieChart: UIViewController {
     func secondAppUI() {
         chartView.removeFromSuperview()
         
-        let singleItem = RKPieChartItem(ratio: 50, color: UIColor.orange, title: "2th Item")
+        let singleItem = RKPieChartItem(ratio: 30, color: UIColor.orange, title: "2th Item")
         
         // 새로운 chartView를 생성하고 설정합니다.
         chartView = RKPieChartView(items: [singleItem], centerTitle: "Second App")
@@ -94,7 +94,7 @@ class PieChart: UIViewController {
         
         chartView.removeFromSuperview()
         
-        let singleItem = RKPieChartItem(ratio: 50, color: UIColor.brown, title: "3th Item")
+        let singleItem = RKPieChartItem(ratio: 70, color: UIColor.brown, title: "3th Item")
         
         chartView = RKPieChartView(items: [singleItem], centerTitle: "Third App")
         chartView.circleColor = .systemBrown
