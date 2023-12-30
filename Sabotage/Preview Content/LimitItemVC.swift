@@ -4,7 +4,7 @@ import SwiftUI
 import SnapKit
 import Then
 
-class LimitItemController: UIViewController {
+class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
     var isDatePickerVisible = false
     var isDatePickerVisible2 = false
     let dailyBudgetButton = UIButton()
@@ -106,7 +106,7 @@ class LimitItemController: UIViewController {
             $0.contentHorizontalAlignment = .left
             $0.layer.cornerRadius = 15
             $0.backgroundColor = .systemGray3
-            $0.titleEdgeInsets = UIEdgeInsets(top: -50, left: 5, bottom: 0, right: 50)
+            $0.titleEdgeInsets = UIEdgeInsets(top: -70, left: 10, bottom: 0, right: 50)
             $0.addTarget(self, action: #selector(dailyBudgetButtonTapped), for: .touchUpInside)
             contentView.addSubview($0)
         }.snp.makeConstraints {
@@ -134,7 +134,7 @@ class LimitItemController: UIViewController {
             $0.isHidden = true
             contentView.addSubview($0)
         }.snp.makeConstraints { make in
-            make.centerY.equalTo(dailyBudgetButton.snp.centerY)
+            make.centerY.equalTo(dailyBudgetButton.snp.centerY).offset(-70)
             make.top.equalTo(dailyBudgetButton.snp.top)
             make.trailing.equalTo(dailyBudgetButton.snp.trailing).inset(20)
         }
@@ -160,7 +160,7 @@ class LimitItemController: UIViewController {
             $0.contentHorizontalAlignment = .left
             $0.layer.cornerRadius = 15
             $0.backgroundColor = .systemGray3
-            $0.titleEdgeInsets = UIEdgeInsets(top: -50, left: 5, bottom: 0, right: 50)
+            $0.titleEdgeInsets = UIEdgeInsets(top: -70, left: 10, bottom: 0, right: 50)
             $0.addTarget(self, action: #selector(nudgeButtonTapped), for: .touchUpInside)
             contentView.addSubview($0)
         }.snp.makeConstraints {
@@ -188,7 +188,7 @@ class LimitItemController: UIViewController {
             $0.isHidden = true
             contentView.addSubview($0)
         }.snp.makeConstraints { make in
-            make.centerY.equalTo(nudgeButton)
+            make.centerY.equalTo(nudgeButton.snp.centerY).offset(-70)
             make.top.equalTo(nudgeButton.snp.top)
             make.trailing.equalTo(nudgeButton.snp.trailing).inset(20)
         }
@@ -224,19 +224,10 @@ class LimitItemController: UIViewController {
     }
     
     // dailyBudgetButton을 탭할 때 datePicker 표시/숨김 토글
-    @objc func showHideDatePicker() {
-        countDownDatePicker.isHidden = !countDownDatePicker.isHidden
-    }
-    
-    // 다른 곳을 탭했을 때 datePicker 숨기기
-    @objc func dismissDatePicker(sender: UITapGestureRecognizer) {
-        if !countDownDatePicker.isHidden {
-            let touchLocation = sender.location(in: self.view)
-            if !countDownDatePicker.frame.contains(touchLocation) {
-                countDownDatePicker.isHidden = true
-            }
-        }
-    }
+//    @objc func showHideDatePicker() {
+//        countDownDatePicker.isHidden = !countDownDatePicker.isHidden
+//    }
+
     
     // 앱 하루 총 사용 시간
     @objc func datePickerValueChanged() {
@@ -255,7 +246,9 @@ class LimitItemController: UIViewController {
     }
     
     @objc func dailyBudgetButtonTapped() {
+        print("tapped dailyBudgetButton")
         isDatePickerVisible.toggle()
+        print("toggle in dailyBudgetButtonTapped()")
         
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
@@ -275,7 +268,7 @@ class LimitItemController: UIViewController {
             if self.isDatePickerVisible {
                 self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -140, left: 10, bottom: 0, right: 0)
             } else {
-                self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -50, left: 10, bottom: 0, right: 0)
+                self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -70, left: 10, bottom: 0, right: 0)
             }
             
             self.countDownDatePicker.isHidden = !self.isDatePickerVisible
@@ -284,23 +277,8 @@ class LimitItemController: UIViewController {
         }
     }
     
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touch = touches.first
-        let location = touch?.location(in: self.view)
-        
-        // Check if countDownDatePicker2 is visible and touch location is outside of it
-        if !countDownDatePicker2.isHidden, let loc = location, !countDownDatePicker2.frame.contains(loc) {
-            hideCountDownDatePicker2()
-        }
-        
-        // If countDownDatePicker is visible, handle its logic
-        if !countDownDatePicker.isHidden {
-            hideCountDownDatePicker()
-        }
-    }
-    
     func hideCountDownDatePicker() {
+        print("countDownDatePicker 끄러 옴.")
         UIView.animate(withDuration: 0.3) { [weak self] in
             guard let self = self else { return }
             self.countDownDatePicker.isHidden = true
@@ -310,7 +288,7 @@ class LimitItemController: UIViewController {
                 }
             }
             self.dailyBudgetButton.heightAnchor.constraint(equalToConstant: 100).isActive = true
-            self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -50, left: 10, bottom: 0, right: 50)
+            self.dailyBudgetButton.titleEdgeInsets = UIEdgeInsets(top: -70, left: 10, bottom: 0, right: 50)
             self.view.layoutIfNeeded()
         }
     }
@@ -400,6 +378,7 @@ class LimitItemController: UIViewController {
 }
 
 extension LimitItemController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -408,11 +387,46 @@ extension LimitItemController: UITextFieldDelegate {
  
 
 extension LimitItemController {
+    
     func setupTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tapGesture.cancelsTouchesInView = false
+        
+        print("setupTapGesture")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissPicker))
+        tapGesture.delegate = self
         view.addGestureRecognizer(tapGesture)
     }
+
+    @objc func dismissPicker(_ gestureRecognizer: UITapGestureRecognizer) {
+        print("dismissPicker")
+        let touchLocation = gestureRecognizer.location(in: view)
+        
+        if !countDownDatePicker.isHidden && !countDownDatePicker.frame.contains(touchLocation) {
+            hideCountDownDatePicker()
+        }
+
+        if !countDownDatePicker2.isHidden && !countDownDatePicker2.frame.contains(touchLocation) {
+            hideCountDownDatePicker2()
+        }
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        print("gestureRecognizer")
+        let touchLocation = touch.location(in: view)
+
+        if !countDownDatePicker.isHidden && countDownDatePicker.frame.contains(touchLocation) {
+//            print("toggle in gestureRecognizer")
+//            isDatePickerVisible.toggle()
+            return false
+        }
+
+        if !countDownDatePicker2.isHidden && countDownDatePicker2.frame.contains(touchLocation) {
+//            isDatePickerVisible.toggle()
+            return false
+        }
+
+        return true
+    }
+    
     
     @objc func dismissKeyboard() {
         view.endEditing(true)

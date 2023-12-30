@@ -43,7 +43,7 @@
 		8852C06D2B3C4B5C00219714 /* LimitItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C06C2B3C4B5C00219714 /* LimitItemVC.swift */; };
 		88637AB72B3C70ED006F1FF6 /* SaveActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88637AB62B3C70ED006F1FF6 /* SaveActionItemController.swift */; };
 		88ABDAB22B3EA3BD0011682E /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ABDAB12B3EA3BD0011682E /* PieChart.swift */; };
-		B692A2FC62489F454D08916D /* Pods_Sabotage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D54989E361DB14E3DA0ACBD /* Pods_Sabotage.framework */; };
+		DB98B45E2DBF590A60210D39 /* Pods_Sabotage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE09D05FFC7473D463C0201 /* Pods_Sabotage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +105,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0D54989E361DB14E3DA0ACBD /* Pods_Sabotage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sabotage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		16F47731CD9E18D666831D51 /* Pods-Sabotage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.release.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.release.xcconfig"; sourceTree = "<group>"; };
 		214CC47D2B3C4782003B74EB /* Sabotage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sabotage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		214CC4802B3C4782003B74EB /* SabotageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabotageApp.swift; sourceTree = "<group>"; };
 		214CC4822B3C4782003B74EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		2169E8342B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectLimitAppVMSU.swift; path = ScreenTimeReport/SelectLimitAppVMSU.swift; sourceTree = SOURCE_ROOT; };
 		2169E8362B3DD3A600A8DC07 /* ScreenTimeVMSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeVMSU.swift; sourceTree = "<group>"; };
 		2169E8382B3DD42C00A8DC07 /* AppStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageManager.swift; sourceTree = "<group>"; };
-		6FD33177F03DFB8AEC313974 /* Pods-Sabotage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.release.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.release.xcconfig"; sourceTree = "<group>"; };
+		5BE09D05FFC7473D463C0201 /* Pods_Sabotage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sabotage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8852C05C2B3C491600219714 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		8852C0602B3C4A7900219714 /* AnalysisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisVC.swift; sourceTree = "<group>"; };
 		8852C0642B3C4AB300219714 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		8852C06C2B3C4B5C00219714 /* LimitItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LimitItemVC.swift; path = "Sabotage/Preview Content/LimitItemVC.swift"; sourceTree = SOURCE_ROOT; };
 		88637AB62B3C70ED006F1FF6 /* SaveActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionItemController.swift; sourceTree = "<group>"; };
 		88ABDAB12B3EA3BD0011682E /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
-		B67E6903597848D8825D1C81 /* Pods-Sabotage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.debug.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.debug.xcconfig"; sourceTree = "<group>"; };
+		C1BCE96EF1EBB5C2257ED96E /* Pods-Sabotage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.debug.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B692A2FC62489F454D08916D /* Pods_Sabotage.framework in Frameworks */,
+				DB98B45E2DBF590A60210D39 /* Pods_Sabotage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,10 +406,10 @@
 		B367982E8053F16AA7F05DB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0D54989E361DB14E3DA0ACBD /* Pods_Sabotage.framework */,
 				2169E7D82B3D750C00A8DC07 /* DeviceActivity.framework */,
 				2169E7EB2B3D752A00A8DC07 /* ManagedSettings.framework */,
 				2169E7FE2B3D754400A8DC07 /* ManagedSettingsUI.framework */,
+				5BE09D05FFC7473D463C0201 /* Pods_Sabotage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -417,8 +417,8 @@
 		C4B8D01A6685DE79369298BF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B67E6903597848D8825D1C81 /* Pods-Sabotage.debug.xcconfig */,
-				6FD33177F03DFB8AEC313974 /* Pods-Sabotage.release.xcconfig */,
+				C1BCE96EF1EBB5C2257ED96E /* Pods-Sabotage.debug.xcconfig */,
+				16F47731CD9E18D666831D51 /* Pods-Sabotage.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -430,13 +430,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 214CC48B2B3C4784003B74EB /* Build configuration list for PBXNativeTarget "Sabotage" */;
 			buildPhases = (
-				A96BC9FC97872165C18B9F09 /* [CP] Check Pods Manifest.lock */,
+				C4AD5DDF2714DB7477214325 /* [CP] Check Pods Manifest.lock */,
 				214CC4792B3C4782003B74EB /* Sources */,
 				214CC47A2B3C4782003B74EB /* Frameworks */,
 				214CC47B2B3C4782003B74EB /* Resources */,
-				BD15039E30D11C9A80BEC16A /* [CP] Embed Pods Frameworks */,
 				2169E7E52B3D750C00A8DC07 /* Embed Foundation Extensions */,
 				2169E81F2B3D75C400A8DC07 /* Embed ExtensionKit Extensions */,
+				96D697ED078559D4CB48E6E8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -555,8 +555,6 @@
 				Base,
 			);
 			mainGroup = 214CC4742B3C4782003B74EB;
-			packageReferences = (
-			);
 			productRefGroup = 214CC47E2B3C4782003B74EB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -611,7 +609,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A96BC9FC97872165C18B9F09 /* [CP] Check Pods Manifest.lock */ = {
+		96D697ED078559D4CB48E6E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sabotage/Pods-Sabotage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Sabotage/Pods-Sabotage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sabotage/Pods-Sabotage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4AD5DDF2714DB7477214325 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -631,23 +646,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BD15039E30D11C9A80BEC16A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Sabotage/Pods-Sabotage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Sabotage/Pods-Sabotage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sabotage/Pods-Sabotage-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -861,7 +859,7 @@
 		};
 		214CC48C2B3C4784003B74EB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B67E6903597848D8825D1C81 /* Pods-Sabotage.debug.xcconfig */;
+			baseConfigurationReference = C1BCE96EF1EBB5C2257ED96E /* Pods-Sabotage.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -894,7 +892,7 @@
 		};
 		214CC48D2B3C4784003B74EB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FD33177F03DFB8AEC313974 /* Pods-Sabotage.release.xcconfig */;
+			baseConfigurationReference = 16F47731CD9E18D666831D51 /* Pods-Sabotage.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
