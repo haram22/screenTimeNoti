@@ -7,7 +7,12 @@
 		<key>DeviceActivityMonitor.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>4</integer>
+		</dict>
+		<key>Sabotage.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>ScreenTimeReport.xcscheme_^#shared#^_</key>
 		<dict>
@@ -22,7 +27,7 @@
 		<key>ShieldConfiguration.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>7</integer>
 		</dict>
 	</dict>
 </dict>
