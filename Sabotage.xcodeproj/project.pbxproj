@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		210B7B222B3FEA6600D4105D /* LimitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B212B3FEA6600D4105D /* LimitTableViewCell.swift */; };
-		210B7B262B3FEF8E00D4105D /* LimitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B252B3FEF8E00D4105D /* LimitModel.swift */; };
-		210B7B2E2B3FF32300D4105D /* ActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B2D2B3FF32300D4105D /* ActionTableViewCell.swift */; };
-		210B7B302B3FF4C000D4105D /* ActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B2F2B3FF4C000D4105D /* ActionModel.swift */; };
-		210B7B322B3FFF1800D4105D /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B312B3FFF1800D4105D /* MainTableView.swift */; };
+		210B7B222B3FEA6600D4105D /* (null) in Sources */ = {isa = PBXBuildFile; };
+		210B7B262B3FEF8E00D4105D /* (null) in Sources */ = {isa = PBXBuildFile; };
+		210B7B2E2B3FF32300D4105D /* (null) in Sources */ = {isa = PBXBuildFile; };
+		210B7B302B3FF4C000D4105D /* (null) in Sources */ = {isa = PBXBuildFile; };
+		210B7B322B3FFF1800D4105D /* (null) in Sources */ = {isa = PBXBuildFile; };
+		210B7B382B400D5100D4105D /* ActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B372B400D5100D4105D /* ActionTableViewCell.swift */; };
+		210B7B3A2B400D6F00D4105D /* ActionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B392B400D6F00D4105D /* ActionModel.swift */; };
+		210B7B3E2B400DB900D4105D /* LimitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B3D2B400DB900D4105D /* LimitTableViewCell.swift */; };
+		210B7B402B400DD600D4105D /* LimitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B3F2B400DD600D4105D /* LimitModel.swift */; };
+		210B7B422B400E4000D4105D /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B412B400E4000D4105D /* MainTableView.swift */; };
 		214CC4812B3C4782003B74EB /* SabotageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214CC4802B3C4782003B74EB /* SabotageApp.swift */; };
 		214CC4832B3C4782003B74EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214CC4822B3C4782003B74EB /* ContentView.swift */; };
 		214CC4852B3C4784003B74EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214CC4842B3C4784003B74EB /* Assets.xcassets */; };
@@ -111,6 +116,11 @@
 
 /* Begin PBXFileReference section */
 		16F47731CD9E18D666831D51 /* Pods-Sabotage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.release.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.release.xcconfig"; sourceTree = "<group>"; };
+		210B7B372B400D5100D4105D /* ActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTableViewCell.swift; sourceTree = "<group>"; };
+		210B7B392B400D6F00D4105D /* ActionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionModel.swift; sourceTree = "<group>"; };
+		210B7B3D2B400DB900D4105D /* LimitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitTableViewCell.swift; sourceTree = "<group>"; };
+		210B7B3F2B400DD600D4105D /* LimitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitModel.swift; sourceTree = "<group>"; };
+		210B7B412B400E4000D4105D /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
 		214CC47D2B3C4782003B74EB /* Sabotage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sabotage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		214CC4802B3C4782003B74EB /* SabotageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabotageApp.swift; sourceTree = "<group>"; };
 		214CC4822B3C4782003B74EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -208,7 +218,7 @@
 		210B7B2B2B3FF2BA00D4105D /* LimitTable */ = {
 			isa = PBXGroup;
 			children = (
-				210B7B212B3FEA6600D4105D /* LimitTableViewCell.swift */,
+				210B7B3D2B400DB900D4105D /* LimitTableViewCell.swift */,
 			);
 			path = LimitTable;
 			sourceTree = "<group>";
@@ -216,7 +226,7 @@
 		210B7B2C2B3FF30400D4105D /* ActionTable */ = {
 			isa = PBXGroup;
 			children = (
-				210B7B2D2B3FF32300D4105D /* ActionTableViewCell.swift */,
+				210B7B372B400D5100D4105D /* ActionTableViewCell.swift */,
 			);
 			path = ActionTable;
 			sourceTree = "<group>";
@@ -401,7 +411,7 @@
 			children = (
 				8852C0642B3C4AB300219714 /* MainVC.swift */,
 				88ABDAB12B3EA3BD0011682E /* PieChart.swift */,
-				210B7B312B3FFF1800D4105D /* MainTableView.swift */,
+				210B7B412B400E4000D4105D /* MainTableView.swift */,
 			);
 			path = MainPage;
 			sourceTree = "<group>";
@@ -413,7 +423,7 @@
 				8852C0682B3C4B1300219714 /* ActionItemController.swift */,
 				8852C06A2B3C4B2800219714 /* AddActionItemController.swift */,
 				88637AB62B3C70ED006F1FF6 /* SaveActionItemController.swift */,
-				210B7B2F2B3FF4C000D4105D /* ActionModel.swift */,
+				210B7B392B400D6F00D4105D /* ActionModel.swift */,
 			);
 			path = ActionView;
 			sourceTree = "<group>";
@@ -424,7 +434,7 @@
 				210B7B2B2B3FF2BA00D4105D /* LimitTable */,
 				8852C06C2B3C4B5C00219714 /* LimitItemVC.swift */,
 				2169E8342B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift */,
-				210B7B252B3FEF8E00D4105D /* LimitModel.swift */,
+				210B7B3F2B400DD600D4105D /* LimitModel.swift */,
 			);
 			path = LimitView;
 			sourceTree = "<group>";
@@ -684,26 +694,31 @@
 				2169E8372B3DD3A600A8DC07 /* ScreenTimeVMSU.swift in Sources */,
 				8852C0692B3C4B1300219714 /* ActionItemController.swift in Sources */,
 				2169E8222B3D778600A8DC07 /* FamilyControlManager.swift in Sources */,
+				210B7B3A2B400D6F00D4105D /* ActionModel.swift in Sources */,
+				210B7B382B400D5100D4105D /* ActionTableViewCell.swift in Sources */,
 				8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */,
 				2169E8282B3D78C100A8DC07 /* PermissionViewSU.swift in Sources */,
 				88637AB72B3C70ED006F1FF6 /* SaveActionItemController.swift in Sources */,
 				2169E82D2B3D795200A8DC07 /* ScheduleVMSU.swift in Sources */,
 				2169E8302B3D79F400A8DC07 /* Bundle_Extension.swift in Sources */,
-				210B7B322B3FFF1800D4105D /* MainTableView.swift in Sources */,
+				210B7B322B3FFF1800D4105D /* (null) in Sources */,
 				8852C0652B3C4AB300219714 /* MainVC.swift in Sources */,
 				2169E8392B3DD42C00A8DC07 /* AppStorageManager.swift in Sources */,
 				88ABDAB22B3EA3BD0011682E /* PieChart.swift in Sources */,
 				8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */,
 				214CC4832B3C4782003B74EB /* ContentView.swift in Sources */,
-				210B7B262B3FEF8E00D4105D /* LimitModel.swift in Sources */,
+				210B7B262B3FEF8E00D4105D /* (null) in Sources */,
 				214CC4812B3C4782003B74EB /* SabotageApp.swift in Sources */,
 				8852C06D2B3C4B5C00219714 /* LimitItemVC.swift in Sources */,
 				2169E82B2B3D793800A8DC07 /* PermissionVMSU.swift in Sources */,
-				210B7B222B3FEA6600D4105D /* LimitTableViewCell.swift in Sources */,
+				210B7B402B400DD600D4105D /* LimitModel.swift in Sources */,
+				210B7B222B3FEA6600D4105D /* (null) in Sources */,
+				210B7B422B400E4000D4105D /* MainTableView.swift in Sources */,
 				2169E8242B3D787500A8DC07 /* DeviceActivtyManager.swift in Sources */,
 				2169E8352B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift in Sources */,
-				210B7B302B3FF4C000D4105D /* ActionModel.swift in Sources */,
-				210B7B2E2B3FF32300D4105D /* ActionTableViewCell.swift in Sources */,
+				210B7B302B3FF4C000D4105D /* (null) in Sources */,
+				210B7B3E2B400DB900D4105D /* LimitTableViewCell.swift in Sources */,
+				210B7B2E2B3FF32300D4105D /* (null) in Sources */,
 				8852C06B2B3C4B2800219714 /* AddActionItemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
