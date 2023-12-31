@@ -4,6 +4,7 @@ import SwiftUI
 import SnapKit
 import Then
 
+// limit item
 class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
     
     // tableview data
