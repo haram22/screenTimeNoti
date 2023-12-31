@@ -63,7 +63,12 @@
 		21741A152B4170020062B0D7 /* Bundle_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E82F2B3D79F400A8DC07 /* Bundle_Extension.swift */; };
 		21741A162B4170020062B0D7 /* Bundle_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E82F2B3D79F400A8DC07 /* Bundle_Extension.swift */; };
 		21741A1B2B417CCB0062B0D7 /* DeviceActivityMonitor.appex in Resources */ = {isa = PBXBuildFile; fileRef = 2169E7D72B3D750C00A8DC07 /* DeviceActivityMonitor.appex */; };
+		21741A1E2B417D520062B0D7 /* MonitoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21741A1D2B417D520062B0D7 /* MonitoringView.swift */; };
+		21741A212B417FC60062B0D7 /* noti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21741A202B417FC60062B0D7 /* noti.swift */; };
+		21741A232B4180390062B0D7 /* notiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21741A222B4180390062B0D7 /* notiManager.swift */; };
 		21750E062B4159BA004E9A04 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21750E052B4159BA004E9A04 /* ScheduleView.swift */; };
+		21E458732B418E5500AFC7F4 /* notiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21741A222B4180390062B0D7 /* notiManager.swift */; };
+		21E458752B418EA600AFC7F4 /* notiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21741A222B4180390062B0D7 /* notiManager.swift */; };
 		8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C05C2B3C491600219714 /* ProfileVC.swift */; };
 		8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0602B3C4A7900219714 /* AnalysisVC.swift */; };
 		8852C0652B3C4AB300219714 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0642B3C4AB300219714 /* MainVC.swift */; };
@@ -182,6 +187,9 @@
 		2169E8362B3DD3A600A8DC07 /* ScreenTimeVMSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeVMSU.swift; sourceTree = "<group>"; };
 		2169E8382B3DD42C00A8DC07 /* AppStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageManager.swift; sourceTree = "<group>"; };
 		21741A092B41699E0062B0D7 /* shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = shared.xcconfig; sourceTree = "<group>"; };
+		21741A1D2B417D520062B0D7 /* MonitoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringView.swift; sourceTree = "<group>"; };
+		21741A202B417FC60062B0D7 /* noti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noti.swift; sourceTree = "<group>"; };
+		21741A222B4180390062B0D7 /* notiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notiManager.swift; sourceTree = "<group>"; };
 		21750E052B4159BA004E9A04 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		5BE09D05FFC7473D463C0201 /* Pods_Sabotage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sabotage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8852C05C2B3C491600219714 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -295,6 +303,7 @@
 		214CC47F2B3C4782003B74EB /* Sabotage */ = {
 			isa = PBXGroup;
 			children = (
+				21741A1F2B417FBA0062B0D7 /* NotiTest */,
 				21741A1C2B417CE50062B0D7 /* monitor */,
 				210B7B432B40175D00D4105D /* ServerAPI */,
 				2169E8332B3D958F00A8DC07 /* Info.plist */,
@@ -405,8 +414,18 @@
 		21741A1C2B417CE50062B0D7 /* monitor */ = {
 			isa = PBXGroup;
 			children = (
+				21741A1D2B417D520062B0D7 /* MonitoringView.swift */,
 			);
 			path = monitor;
+			sourceTree = "<group>";
+		};
+		21741A1F2B417FBA0062B0D7 /* NotiTest */ = {
+			isa = PBXGroup;
+			children = (
+				21741A202B417FC60062B0D7 /* noti.swift */,
+				21741A222B4180390062B0D7 /* notiManager.swift */,
+			);
+			path = NotiTest;
 			sourceTree = "<group>";
 		};
 		8852C05A2B3C484500219714 /* Profile */ = {
@@ -746,6 +765,7 @@
 				88A521042B41654F00CB1DCE /* RankingTableView.swift in Sources */,
 				2169E8372B3DD3A600A8DC07 /* ScreenTimeVMSU.swift in Sources */,
 				21741A0A2B41699E0062B0D7 /* shared.xcconfig in Sources */,
+				21741A1E2B417D520062B0D7 /* MonitoringView.swift in Sources */,
 				210B7B472B4018CF00D4105D /* ActionApi.swift in Sources */,
 				210B7B492B4018D800D4105D /* LimitApi.swift in Sources */,
 				8852C0692B3C4B1300219714 /* ActionItemController.swift in Sources */,
@@ -766,6 +786,7 @@
 				210B7B452B40176900D4105D /* APICaller.swift in Sources */,
 				88ABDAB22B3EA3BD0011682E /* PieChart.swift in Sources */,
 				8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */,
+				21741A232B4180390062B0D7 /* notiManager.swift in Sources */,
 				214CC4832B3C4782003B74EB /* ContentView.swift in Sources */,
 				210B7B262B3FEF8E00D4105D /* (null) in Sources */,
 				214CC4812B3C4782003B74EB /* SabotageApp.swift in Sources */,
@@ -774,6 +795,7 @@
 				21741A132B416FD40062B0D7 /* ScreenTimeActivityReport.swift in Sources */,
 				210B7B402B400DD600D4105D /* LimitModel.swift in Sources */,
 				210B7B222B3FEA6600D4105D /* (null) in Sources */,
+				21741A212B417FC60062B0D7 /* noti.swift in Sources */,
 				210B7B422B400E4000D4105D /* MainTableView.swift in Sources */,
 				2169E8242B3D787500A8DC07 /* DeviceActivtyManager.swift in Sources */,
 				2169E8352B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift in Sources */,
@@ -789,6 +811,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E458732B418E5500AFC7F4 /* notiManager.swift in Sources */,
 				2169E7DC2B3D750C00A8DC07 /* DeviceActivityMonitorExtension.swift in Sources */,
 				21741A072B41694F0062B0D7 /* ScheduleVMSU.swift in Sources */,
 				21741A082B4169600062B0D7 /* DeviceActivtyManager.swift in Sources */,
@@ -819,6 +842,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2169E8162B3D75C400A8DC07 /* TotalActivityView.swift in Sources */,
+				21E458752B418EA600AFC7F4 /* notiManager.swift in Sources */,
 				21741A162B4170020062B0D7 /* Bundle_Extension.swift in Sources */,
 				2169E8322B3D7A6900A8DC07 /* ScreenTimeActivityReport.swift in Sources */,
 				2169E8122B3D75C400A8DC07 /* ScreenTimeReport.swift in Sources */,
@@ -987,6 +1011,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sabotage/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1019,6 +1044,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sabotage/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

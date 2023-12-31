@@ -38,7 +38,7 @@ struct TotalActivityReport: DeviceActivityReportScene {
         var totalActivityDuration: Double = 0 /// 총 스크린 타임 시간
         var list: [AppDeviceActivity] = [] /// 사용 앱 리스트
             let limitTime: Double = 2700
-            let specificLimitTime: Double = 720
+            let specificLimitTime: Double = 1320
             
         /// DeviceActivityResults 데이터에서 화면에 보여주기 위해 필요한 내용을 추출해줍니다.
         for await eachData in data {
@@ -57,7 +57,9 @@ struct TotalActivityReport: DeviceActivityReportScene {
                             scheduleNotification_each0(appName: applicationActivity.application.localizedDisplayName!)
                         }
                         if duration >= specificLimitTime && duration <= specificLimitTime + 60  { // 10 minutes
-                            scheduleNotification_each1(appName: applicationActivity.application.localizedDisplayName!)
+//                            scheduleNotification_each1(appName: applicationActivity.application.localizedDisplayName!)
+                            setNotifications()
+                            
                         }
                         if duration >= specificLimitTime + 60 && duration <= specificLimitTime + 120  { // 10 minutes
                             scheduleNotification_each2(appName: applicationActivity.application.localizedDisplayName!)
@@ -84,6 +86,13 @@ struct TotalActivityReport: DeviceActivityReportScene {
                 }
                 else if totalActivityDuration >= limitTime + 60 && totalActivityDuration <= limitTime + 120 { // 10 minutes
                     scheduleNotification2()
+                }
+                func setNotifications() {
+                    let manager = LocalNotificationManager()
+//                    manager.requestPermission()
+                    manager.requestPermission()
+                    manager.addNotification(title: "This is a test reminder")
+                    manager.schedule()
                 }
                 func scheduleNotification_each0(appName: String) {
                     if notificationSentForApps["\(appName)1"] != true {
