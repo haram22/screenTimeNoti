@@ -70,6 +70,7 @@
 		21E458732B418E5500AFC7F4 /* notiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21741A222B4180390062B0D7 /* notiManager.swift */; };
 		21E458752B418EA600AFC7F4 /* notiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21741A222B4180390062B0D7 /* notiManager.swift */; };
 		21E458782B41984300AFC7F4 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E458772B41984300AFC7F4 /* Colors.xcassets */; };
+		21E4587C2B41F22D00AFC7F4 /* DeviceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4587B2B41F22D00AFC7F4 /* DeviceID.swift */; };
 		8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C05C2B3C491600219714 /* ProfileVC.swift */; };
 		8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0602B3C4A7900219714 /* AnalysisVC.swift */; };
 		8852C0652B3C4AB300219714 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0642B3C4AB300219714 /* MainVC.swift */; };
@@ -194,6 +195,7 @@
 		21741A222B4180390062B0D7 /* notiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notiManager.swift; sourceTree = "<group>"; };
 		21750E052B4159BA004E9A04 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		21E458772B41984300AFC7F4 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		21E4587B2B41F22D00AFC7F4 /* DeviceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceID.swift; sourceTree = "<group>"; };
 		5BE09D05FFC7473D463C0201 /* Pods_Sabotage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sabotage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8852C05C2B3C491600219714 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		8852C0602B3C4A7900219714 /* AnalysisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisVC.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				210B7B442B40176900D4105D /* APICaller.swift */,
 				210B7B482B4018D800D4105D /* LimitApi.swift */,
 				210B7B462B4018CF00D4105D /* ActionApi.swift */,
+				21E4587B2B41F22D00AFC7F4 /* DeviceID.swift */,
 			);
 			path = ServerAPI;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				21741A132B416FD40062B0D7 /* ScreenTimeActivityReport.swift in Sources */,
 				210B7B402B400DD600D4105D /* LimitModel.swift in Sources */,
 				210B7B222B3FEA6600D4105D /* (null) in Sources */,
+				21E4587C2B41F22D00AFC7F4 /* DeviceID.swift in Sources */,
 				21741A212B417FC60062B0D7 /* noti.swift in Sources */,
 				210B7B422B400E4000D4105D /* MainTableView.swift in Sources */,
 				2169E8242B3D787500A8DC07 /* DeviceActivtyManager.swift in Sources */,
