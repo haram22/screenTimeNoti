@@ -363,12 +363,22 @@ class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
     // "완료" 버튼 클릭 시
     @objc func completeButtonTapped() {
         // Check if inputName meets the character limit
+
+//         if let text = inputName.text, !text.isEmpty, text.count <= 3 {
+//             // If it's within the limit, proceed to the MainVC
+//             let completeActionItemController = MainVC()
+//             navigationController?.pushViewController(completeActionItemController, animated: true)
+//             // Hide the error label if validation passes
+//             errorLabel.isHidden = true
+//             limitPostRequest(with: 1, title: "title", apps: ["a", "b"], timeBudget: 2)
+
         if let text = inputName.text, !text.isEmpty, text.count <= 10 {
             // If it's within the limit, proceed to update the MainVC's data
             delegate?.addNewLimitItem(text)
             
             // Dismiss the LimitItemController
             navigationController?.popViewController(animated: true)
+
         } else {
             errorLabel.text = "10자 이내로 작성해주세요"
             errorLabel.isHidden = false

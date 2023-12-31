@@ -17,6 +17,9 @@
 		210B7B3E2B400DB900D4105D /* LimitTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B3D2B400DB900D4105D /* LimitTableViewCell.swift */; };
 		210B7B402B400DD600D4105D /* LimitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B3F2B400DD600D4105D /* LimitModel.swift */; };
 		210B7B422B400E4000D4105D /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B412B400E4000D4105D /* MainTableView.swift */; };
+		210B7B452B40176900D4105D /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B442B40176900D4105D /* APICaller.swift */; };
+		210B7B472B4018CF00D4105D /* ActionApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B462B4018CF00D4105D /* ActionApi.swift */; };
+		210B7B492B4018D800D4105D /* LimitApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B7B482B4018D800D4105D /* LimitApi.swift */; };
 		214CC4812B3C4782003B74EB /* SabotageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214CC4802B3C4782003B74EB /* SabotageApp.swift */; };
 		214CC4832B3C4782003B74EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214CC4822B3C4782003B74EB /* ContentView.swift */; };
 		214CC4852B3C4784003B74EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 214CC4842B3C4784003B74EB /* Assets.xcassets */; };
@@ -122,6 +125,9 @@
 		210B7B3D2B400DB900D4105D /* LimitTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitTableViewCell.swift; sourceTree = "<group>"; };
 		210B7B3F2B400DD600D4105D /* LimitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitModel.swift; sourceTree = "<group>"; };
 		210B7B412B400E4000D4105D /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
+		210B7B442B40176900D4105D /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		210B7B462B4018CF00D4105D /* ActionApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionApi.swift; sourceTree = "<group>"; };
+		210B7B482B4018D800D4105D /* LimitApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitApi.swift; sourceTree = "<group>"; };
 		214CC47D2B3C4782003B74EB /* Sabotage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sabotage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		214CC4802B3C4782003B74EB /* SabotageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SabotageApp.swift; sourceTree = "<group>"; };
 		214CC4822B3C4782003B74EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -233,6 +239,16 @@
 			path = ActionTable;
 			sourceTree = "<group>";
 		};
+		210B7B432B40175D00D4105D /* ServerAPI */ = {
+			isa = PBXGroup;
+			children = (
+				210B7B442B40176900D4105D /* APICaller.swift */,
+				210B7B482B4018D800D4105D /* LimitApi.swift */,
+				210B7B462B4018CF00D4105D /* ActionApi.swift */,
+			);
+			path = ServerAPI;
+			sourceTree = "<group>";
+		};
 		214CC4742B3C4782003B74EB = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +278,7 @@
 		214CC47F2B3C4782003B74EB /* Sabotage */ = {
 			isa = PBXGroup;
 			children = (
+				210B7B432B40175D00D4105D /* ServerAPI */,
 				2169E8332B3D958F00A8DC07 /* Info.plist */,
 				2169E82E2B3D79E100A8DC07 /* Extension */,
 				2169E8202B3D773200A8DC07 /* Access */,
@@ -696,6 +713,8 @@
 			files = (
 				88A521042B41654F00CB1DCE /* RankingTableView.swift in Sources */,
 				2169E8372B3DD3A600A8DC07 /* ScreenTimeVMSU.swift in Sources */,
+				210B7B472B4018CF00D4105D /* ActionApi.swift in Sources */,
+				210B7B492B4018D800D4105D /* LimitApi.swift in Sources */,
 				8852C0692B3C4B1300219714 /* ActionItemController.swift in Sources */,
 				2169E8222B3D778600A8DC07 /* FamilyControlManager.swift in Sources */,
 				210B7B3A2B400D6F00D4105D /* ActionModel.swift in Sources */,
@@ -708,6 +727,7 @@
 				210B7B322B3FFF1800D4105D /* (null) in Sources */,
 				8852C0652B3C4AB300219714 /* MainVC.swift in Sources */,
 				2169E8392B3DD42C00A8DC07 /* AppStorageManager.swift in Sources */,
+				210B7B452B40176900D4105D /* APICaller.swift in Sources */,
 				88ABDAB22B3EA3BD0011682E /* PieChart.swift in Sources */,
 				8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */,
 				214CC4832B3C4782003B74EB /* ContentView.swift in Sources */,
@@ -923,7 +943,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sabotage/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -956,7 +975,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Sabotage/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
