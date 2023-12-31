@@ -25,6 +25,7 @@ struct ScreenTime_SabotageApp: App {
                 if !familyControlsManager.hasScreenTimePermission {
                     ContentView()
                 } else {
+//                    NotiView()
                     ContentView()
                 }
             }

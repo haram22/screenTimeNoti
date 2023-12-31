@@ -79,9 +79,3 @@ extension PermissionView {
         .padding(24)
     }
 }
-
-struct PermissionView_Previews: PreviewProvider {
-    static var previews: some View {
-        PermissionView()
-    }
-}

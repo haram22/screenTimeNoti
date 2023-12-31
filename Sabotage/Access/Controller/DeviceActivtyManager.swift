@@ -10,6 +10,11 @@ import DeviceActivity
 import ManagedSettings
 import UserNotifications
 
+//class DeviceActivityMonitors: DeviceActivityMonitor {
+//    override func intervalDidStart(for activity: DeviceActivityName) {
+//        <#code#>
+//    }
+//}
 // MARK: - ram: monitoring 시작 시 배너
 class MyDeviceActivityMonitorExtension: DeviceActivityMonitor {
     override func intervalDidStart(for activity: DeviceActivityName) {

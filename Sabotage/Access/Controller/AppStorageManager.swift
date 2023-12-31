@@ -23,5 +23,4 @@ public enum AppStorageKey: String {
     case warningTime // 미리 알림 시간
 }
 
-// MARK: 실기 테스트 시 App Groups 설정 후 동일한 이름으로 수정하세요.
-let APP_GROUP_NAME = "group.com.mustsleep"
+let APP_GROUP_NAME = "group.com.ram.screentime"

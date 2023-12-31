@@ -42,16 +42,12 @@ enum ScheduleSectionInfo {
     }
 }
 
-let calendar = Calendar.current
-let now = Date()
-
 class ScheduleVM: ObservableObject {
-    
     // MARK: - 스케쥴 설정을 위한 멤버 변수
     @AppStorage("scheduleStartTime", store: UserDefaults(suiteName: Bundle.main.appGroupName))
-    var scheduleStartTime = calendar.startOfDay(for: now)
+    var scheduleStartTime = Date() // 현재 시간
     @AppStorage("scheduleEndTime", store: UserDefaults(suiteName: Bundle.main.appGroupName))
-    var scheduleEndTime = calendar.date(bySettingHour: 23, minute: 59, second: 0, of: now) ?? now
+    var scheduleEndTime = Date() + 900 // 현재 시간 + 15분
     // MARK: - 사용자가 설정한 앱/도메인을 담고 있는 멤버 변수
     @AppStorage("selection", store: UserDefaults(suiteName: Bundle.main.appGroupName))
     var selection = FamilyActivitySelection()
@@ -76,13 +72,6 @@ extension ScheduleVM {
         isFamilyActivitySectionActive = true
     }
     
-    // MARK: - ScreenTime API 권한 삭제 alert 열기
-    /// 호출 시 권한을 제거할 수 있는 alert을 열어 앱 사용을 위해
-    /// 부여했던 ScreenTIme API 권한을 제거할 수 있습니다.
-    func showRevokeAlert() {
-        isRevokeAlertActive = true
-    }
-    
     // TODO: - ScheduleView의 tempSelection으로 확인하도록 바꿔서 ScheduleView로 위치를 옮겼습니다. (확인 후 삭제)
 //    /// 사용자가 선택한 앱 & 도메인 토큰이 비어있는지 확인하기 위한 메서드입니다.
     func isSelectionEmpty() -> Bool {
@@ -97,7 +86,6 @@ extension ScheduleVM {
     /// 모니터링을 등록하면 DeviceActivityMonitorExtension를 활용해 특정 시점의 이벤트를 감지할 수 있습니다.
     func saveSchedule(selectedApps: FamilyActivitySelection) {
         selection = selectedApps
-        print("selection === \(selection)")
         let startTime = Calendar.current.dateComponents([.hour, .minute], from: scheduleStartTime)
         let endTime = Calendar.current.dateComponents([.hour, .minute], from: scheduleEndTime)
         
