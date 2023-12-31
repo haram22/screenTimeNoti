@@ -375,7 +375,7 @@ class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
         if let text = inputName.text, !text.isEmpty, text.count <= 10 {
             // If it's within the limit, proceed to update the MainVC's data
             delegate?.addNewLimitItem(text)
-            
+//            limitPostRequest(with: 1, title: "title", apps: ["a", "b"], timeBudget: 2)
             // Dismiss the LimitItemController
             navigationController?.popViewController(animated: true)
 
