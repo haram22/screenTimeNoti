@@ -155,6 +155,7 @@ class AnalysisVC: UIViewController {
     func rankingUI() {
         let rankingTableView = RankingTableView()
         rankingTableView.translatesAutoresizingMaskIntoConstraints = false
+//        rankingTableView.cell.backgroundColor = .systemGray6
         contentView.addSubview(rankingTableView)
         
         let rankingBG = UIImageView(image: UIImage(named: "RankingBG"))
@@ -165,8 +166,8 @@ class AnalysisVC: UIViewController {
         NSLayoutConstraint.activate([
             // 배경 이미지 뷰 위치 설정
             rankingBG.topAnchor.constraint(equalTo: label2.bottomAnchor, constant: 5),
-            rankingBG.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            rankingBG.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            rankingBG.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: -20),
+            rankingBG.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             rankingBG.heightAnchor.constraint(equalToConstant: 400),
             
             // 테이블 뷰 위치 설정
