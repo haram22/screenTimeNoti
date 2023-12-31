@@ -79,6 +79,7 @@
 		88637AB72B3C70ED006F1FF6 /* SaveActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88637AB62B3C70ED006F1FF6 /* SaveActionItemController.swift */; };
 		88A521042B41654F00CB1DCE /* RankingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A521032B41654F00CB1DCE /* RankingTableView.swift */; };
 		88ABDAB22B3EA3BD0011682E /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ABDAB12B3EA3BD0011682E /* PieChart.swift */; };
+		88C3E4702B419EF6008953C5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3E46F2B419EF6008953C5 /* Color+Extensions.swift */; };
 		DB98B45E2DBF590A60210D39 /* Pods_Sabotage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE09D05FFC7473D463C0201 /* Pods_Sabotage.framework */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +204,7 @@
 		88637AB62B3C70ED006F1FF6 /* SaveActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionItemController.swift; sourceTree = "<group>"; };
 		88A521032B41654F00CB1DCE /* RankingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableView.swift; sourceTree = "<group>"; };
 		88ABDAB12B3EA3BD0011682E /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		88C3E46F2B419EF6008953C5 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		C1BCE96EF1EBB5C2257ED96E /* Pods-Sabotage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.debug.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -410,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				2169E82F2B3D79F400A8DC07 /* Bundle_Extension.swift */,
+				88C3E46F2B419EF6008953C5 /* Color+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				210B7B492B4018D800D4105D /* LimitApi.swift in Sources */,
 				8852C0692B3C4B1300219714 /* ActionItemController.swift in Sources */,
 				2169E8222B3D778600A8DC07 /* FamilyControlManager.swift in Sources */,
+				88C3E4702B419EF6008953C5 /* Color+Extensions.swift in Sources */,
 				210B7B3A2B400D6F00D4105D /* ActionModel.swift in Sources */,
 				210B7B382B400D5100D4105D /* ActionTableViewCell.swift in Sources */,
 				21741A122B416FCE0062B0D7 /* TotalActivityView.swift in Sources */,

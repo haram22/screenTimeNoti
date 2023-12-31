@@ -25,8 +25,9 @@ class RankingTableView: UIView, UITableViewDataSource, UITableViewDelegate {
         
         // Remove cell separator
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .base200
         
-        tableView.backgroundColor = .systemGroupedBackground
+//        tableView.backgroundColor = .systemGroupedBackground
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: topAnchor),
@@ -46,6 +47,7 @@ class RankingTableView: UIView, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         
+        cell.backgroundColor = .base200
 //        cell.textLabel?.text = "\(indexPath.row + 1)"
         
         // Left Text
