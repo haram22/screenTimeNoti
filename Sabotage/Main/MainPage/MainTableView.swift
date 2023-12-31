@@ -10,24 +10,24 @@ import UIKit
 import SnapKit
 import Then
 
-extension MainVC: UITabBarDelegate {
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        if item.tag == 0, !(navigationController?.topViewController is MainVC) {
-            navigationController?.popToRootViewController(animated: true)
-        } else {
-            switch item.tag {
-            case 1:
-                let analysisVC = AnalysisVC()
-                navigationController?.pushViewController(analysisVC, animated: true)
-            case 2:
-                let profileVC = ProfileVC()
-                navigationController?.pushViewController(profileVC, animated: true)
-            default:
-                break
-            }
-        }
-    }
-}
+//extension MainVC: UITabBarDelegate {
+//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+//        if item.tag == 0, !(navigationController?.topViewController is MainVC) {
+//            navigationController?.popToRootViewController(animated: true)
+//        } else {
+//            switch item.tag {
+//            case 1:
+//                let analysisVC = AnalysisVC()
+//                navigationController?.pushViewController(analysisVC, animated: true)
+//            case 2:
+//                let profileVC = ProfileVC()
+//                navigationController?.pushViewController(profileVC, animated: true)
+//            default:
+//                break
+//            }
+//        }
+//    }
+//}
 
 extension MainVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

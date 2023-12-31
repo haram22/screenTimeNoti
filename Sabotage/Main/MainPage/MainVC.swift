@@ -1,8 +1,14 @@
+//MainVC.swift - 메인 페이지
+
 import UIKit
 import SnapKit
 import Then
 
-class MainVC: UIViewController {
+protocol LimitItemDelegate: AnyObject {
+    func addNewLimitItem(_ itemName: String)
+}
+
+class MainVC: UIViewController, LimitItemDelegate {
     var segmentedControl = UISegmentedControl()
     var actionButton = UIButton(type: .system)
     var addButton = UIButton(type: .system)
@@ -25,6 +31,18 @@ class MainVC: UIViewController {
         ActionDummyDataType(title: "액션 1", description: "액션 1에 대한 설명입니다."),
         ActionDummyDataType(title: "액션 2", description: "액션 1에 대한 설명입니다.")
     ]
+
+
+    // tableview data
+    // LimitItemDelegate 메서드 구현
+    func addNewLimitItem(_ itemName: String) {
+        // LimitItemController에서 전달된 itemName을 기존 데이터에 추가
+        let newLimitItem = LimitDummyDataType(title: itemName, description: "새로운 항목 설명")
+        limitItems.append(newLimitItem)
+
+        // TableView 업데이트
+        limitTableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +54,7 @@ class MainVC: UIViewController {
         // Auto Layout을 위한 설정
         limitTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            limitTableView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -300),
+            limitTableView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -500),
             limitTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             limitTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             limitTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -57,7 +75,7 @@ class MainVC: UIViewController {
                 view.addSubview(tableView)
                 tableView.translatesAutoresizingMaskIntoConstraints = false
                 NSLayoutConstraint.activate([
-                    tableView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -550),
+                    tableView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -500),
                     tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                     tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                     tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -114,32 +132,32 @@ class MainVC: UIViewController {
 //            actionButton.heightAnchor.constraint(equalToConstant: 80)
 //        ])
        
-        tabBar.delegate = self
-        view.addSubview(tabBar)
+//        tabBar.delegate = self
+//        view.addSubview(tabBar)
         
-        // UITabBar constraints 설정
-        tabBar.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tabBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            tabBar.heightAnchor.constraint(equalToConstant: 50)
-        ])
+//        // UITabBar constraints 설정
+//        tabBar.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            tabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            tabBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+//            tabBar.heightAnchor.constraint(equalToConstant: 50)
+//        ])
         
-        // Tab bar 내용
-        let homeItem = UITabBarItem(title: "Home", image: nil, tag: 0)
-        let analysisItem = UITabBarItem(title: "Analysis", image: nil, tag: 1)
-        let profileItem = UITabBarItem(title: "Profile", image: nil, tag: 2)
-        
+//        // Tab bar 내용
+//        let homeItem = UITabBarItem(title: "Home", image: nil, tag: 0)
+//        let analysisItem = UITabBarItem(title: "Analysis", image: nil, tag: 1)
+//        let profileItem = UITabBarItem(title: "Profile", image: nil, tag: 2)
+//
         // Set UITabBarItems to the UITabBar
-        tabBar.setItems([homeItem, analysisItem, profileItem], animated: false)
+//        tabBar.setItems([homeItem, analysisItem, profileItem], animated: false)
     }
 
     private func configureTableView(_ tableView: UITableView, cellClass: UITableViewCell.Type, identifier: String) {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 450), // 수정됨
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 500), // 수정됨
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -221,9 +239,13 @@ class MainVC: UIViewController {
         let actionItemController = ActionItemController()
         navigationController?.pushViewController(actionItemController, animated: true)
     }
-    
+
+
+    // LimitItemController로 이동하는 액션 메서드
     @objc func addButtonTapped() {
         let limitItemController = LimitItemController()
+        limitItemController.delegate = self // LimitItemDelegate 설정
         navigationController?.pushViewController(limitItemController, animated: true)
     }
+
 }
