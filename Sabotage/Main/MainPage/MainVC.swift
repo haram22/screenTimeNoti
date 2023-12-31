@@ -1,6 +1,7 @@
 //MainVC.swift - 메인 페이지
 
 import UIKit
+import SwiftUI
 import SnapKit
 import Then
 
@@ -243,9 +244,21 @@ class MainVC: UIViewController, LimitItemDelegate {
 
     // LimitItemController로 이동하는 액션 메서드
     @objc func addButtonTapped() {
+
         let limitItemController = LimitItemController()
         limitItemController.delegate = self // LimitItemDelegate 설정
         navigationController?.pushViewController(limitItemController, animated: true)
+
+        // print("addButtonTapped")
+        // // SwiftUI 뷰 인스턴스 생성
+        // let scheduleView = ScheduleView()
+
+        // // SwiftUI 뷰를 호스팅하는 UIHostingController 생성
+        // let hostingController = UIHostingController(rootView: scheduleView)
+
+        // // 네비게이션 컨트롤러를 사용하여 화면 전환
+        // navigationController?.pushViewController(hostingController, animated: true)
+
     }
 
 }

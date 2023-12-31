@@ -48,6 +48,8 @@
 		2169E8352B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E8342B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift */; };
 		2169E8372B3DD3A600A8DC07 /* ScreenTimeVMSU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E8362B3DD3A600A8DC07 /* ScreenTimeVMSU.swift */; };
 		2169E8392B3DD42C00A8DC07 /* AppStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E8382B3DD42C00A8DC07 /* AppStorageManager.swift */; };
+		21750E042B41490D004E9A04 /* ScheduleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21750E032B41490D004E9A04 /* ScheduleVM.swift */; };
+		21750E062B4159BA004E9A04 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21750E052B4159BA004E9A04 /* ScheduleView.swift */; };
 		8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C05C2B3C491600219714 /* ProfileVC.swift */; };
 		8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0602B3C4A7900219714 /* AnalysisVC.swift */; };
 		8852C0652B3C4AB300219714 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0642B3C4AB300219714 /* MainVC.swift */; };
@@ -166,6 +168,8 @@
 		2169E8342B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SelectLimitAppVMSU.swift; path = ScreenTimeReport/SelectLimitAppVMSU.swift; sourceTree = SOURCE_ROOT; };
 		2169E8362B3DD3A600A8DC07 /* ScreenTimeVMSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTimeVMSU.swift; sourceTree = "<group>"; };
 		2169E8382B3DD42C00A8DC07 /* AppStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageManager.swift; sourceTree = "<group>"; };
+		21750E032B41490D004E9A04 /* ScheduleVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVM.swift; sourceTree = "<group>"; };
+		21750E052B4159BA004E9A04 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		5BE09D05FFC7473D463C0201 /* Pods_Sabotage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sabotage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8852C05C2B3C491600219714 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		8852C0602B3C4A7900219714 /* AnalysisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisVC.swift; sourceTree = "<group>"; };
@@ -453,8 +457,10 @@
 			children = (
 				210B7B2B2B3FF2BA00D4105D /* LimitTable */,
 				8852C06C2B3C4B5C00219714 /* LimitItemVC.swift */,
+				21750E032B41490D004E9A04 /* ScheduleVM.swift */,
 				2169E8342B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift */,
 				210B7B3F2B400DD600D4105D /* LimitModel.swift */,
+				21750E052B4159BA004E9A04 /* ScheduleView.swift */,
 			);
 			path = LimitView;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 				2169E8222B3D778600A8DC07 /* FamilyControlManager.swift in Sources */,
 				210B7B3A2B400D6F00D4105D /* ActionModel.swift in Sources */,
 				210B7B382B400D5100D4105D /* ActionTableViewCell.swift in Sources */,
+				21750E062B4159BA004E9A04 /* ScheduleView.swift in Sources */,
 				8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */,
 				2169E8282B3D78C100A8DC07 /* PermissionViewSU.swift in Sources */,
 				88637AB72B3C70ED006F1FF6 /* SaveActionItemController.swift in Sources */,
@@ -744,6 +751,7 @@
 				210B7B3E2B400DB900D4105D /* LimitTableViewCell.swift in Sources */,
 				210B7B2E2B3FF32300D4105D /* (null) in Sources */,
 				8852C06B2B3C4B2800219714 /* AddActionItemController.swift in Sources */,
+				21750E042B41490D004E9A04 /* ScheduleVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

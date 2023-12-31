@@ -42,16 +42,12 @@ enum ScheduleSectionInfo {
     }
 }
 
-let calendar = Calendar.current
-let now = Date()
-
 class ScheduleVM: ObservableObject {
-    
     // MARK: - 스케쥴 설정을 위한 멤버 변수
     @AppStorage("scheduleStartTime", store: UserDefaults(suiteName: Bundle.main.appGroupName))
-    var scheduleStartTime = calendar.startOfDay(for: now)
+    var scheduleStartTime = Date() // 현재 시간
     @AppStorage("scheduleEndTime", store: UserDefaults(suiteName: Bundle.main.appGroupName))
-    var scheduleEndTime = calendar.date(bySettingHour: 23, minute: 59, second: 0, of: now) ?? now
+    var scheduleEndTime = Date() + 900 // 현재 시간 + 15분
     // MARK: - 사용자가 설정한 앱/도메인을 담고 있는 멤버 변수
     @AppStorage("selection", store: UserDefaults(suiteName: Bundle.main.appGroupName))
     var selection = FamilyActivitySelection()
@@ -108,6 +104,20 @@ extension ScheduleVM {
         print("start time : \(startTime)")
         print("end time : \(endTime)")
         isSaveAlertActive = true
+    }
+    
+    // MARK: - 스케줄 모니터링 중단
+    /// 현재 모니터링 중이던 스케줄의 모니터링을 중단합니다.
+    func stopScheduleMonitoring() {
+        DeviceActivityManager.shared.handleStopDeviceActivityMonitoring()
+        resetAppGroupData()
+    }
+    
+    // MARK: - 스케줄 모니터링 중단 alert 열기
+    /// 호출 시 모니터링을 중단할 수 있는 alert을 열어
+    /// 현재 모니터링 중인 스케줄의 모니터링을 중단할 수 있습니다.
+    func showStopMonitoringAlert() {
+        isStopMonitoringAlertActive = true
     }
 }
 

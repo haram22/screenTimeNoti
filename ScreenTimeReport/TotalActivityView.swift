@@ -91,13 +91,6 @@ struct ListRow: View {
 ////                                    scheduleNotification()
 //                                }
                             }
-//                            .alert(isPresented: $showAlert) {
-//                                Alert(
-//                                    title: Text("시간 초과"),
-//                                    message: Text("\(eachApp.displayName) 앱의 모니터링 시간이 9분을 초과했습니다."),
-//                                    dismissButton: .default(Text("확인"))
-//                                )
-//                            }
                     }
                 }
             }
@@ -115,18 +108,6 @@ struct ListRow: View {
         .background(.clear)
     }
 }
-
-//func scheduleNotification() {
-//    let content = UNMutableNotificationContent()
-//    content.title = "Time Alert"
-//    content.body = "각 앱"
-//    content.sound = .default
-//
-//    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-//    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-//
-//    UNUserNotificationCenter.current().add(request)
-//}
 
 class AppActivityViewModel: ObservableObject {
     var eachApp: AppDeviceActivity
