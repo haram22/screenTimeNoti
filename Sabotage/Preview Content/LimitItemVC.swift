@@ -365,6 +365,7 @@ class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
             navigationController?.pushViewController(completeActionItemController, animated: true)
             // Hide the error label if validation passes
             errorLabel.isHidden = true
+            limitPostRequest(with: 1, title: "title", apps: ["a", "b"], timeBudget: 2)
         } else {
             // If it exceeds the limit, show an error message and display the error label
             errorLabel.text = "3자 이내로 작성해주세요"

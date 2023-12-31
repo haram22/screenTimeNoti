@@ -4,5 +4,12 @@
 <dict>
 	<key>APP_GROUP_NAME</key>
 	<string>${APP_GROUP_NAME}</string>
+<!--    -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+<!--    -->
 </dict>
 </plist>
