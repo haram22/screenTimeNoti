@@ -72,13 +72,6 @@ extension ScheduleVM {
         isFamilyActivitySectionActive = true
     }
     
-    // MARK: - ScreenTime API 권한 삭제 alert 열기
-    /// 호출 시 권한을 제거할 수 있는 alert을 열어 앱 사용을 위해
-    /// 부여했던 ScreenTIme API 권한을 제거할 수 있습니다.
-    func showRevokeAlert() {
-        isRevokeAlertActive = true
-    }
-    
     // TODO: - ScheduleView의 tempSelection으로 확인하도록 바꿔서 ScheduleView로 위치를 옮겼습니다. (확인 후 삭제)
 //    /// 사용자가 선택한 앱 & 도메인 토큰이 비어있는지 확인하기 위한 메서드입니다.
     func isSelectionEmpty() -> Bool {
@@ -93,7 +86,6 @@ extension ScheduleVM {
     /// 모니터링을 등록하면 DeviceActivityMonitorExtension를 활용해 특정 시점의 이벤트를 감지할 수 있습니다.
     func saveSchedule(selectedApps: FamilyActivitySelection) {
         selection = selectedApps
-        print("selection === \(selection)")
         let startTime = Calendar.current.dateComponents([.hour, .minute], from: scheduleStartTime)
         let endTime = Calendar.current.dateComponents([.hour, .minute], from: scheduleEndTime)
         
@@ -104,20 +96,6 @@ extension ScheduleVM {
         print("start time : \(startTime)")
         print("end time : \(endTime)")
         isSaveAlertActive = true
-    }
-    
-    // MARK: - 스케줄 모니터링 중단
-    /// 현재 모니터링 중이던 스케줄의 모니터링을 중단합니다.
-    func stopScheduleMonitoring() {
-        DeviceActivityManager.shared.handleStopDeviceActivityMonitoring()
-        resetAppGroupData()
-    }
-    
-    // MARK: - 스케줄 모니터링 중단 alert 열기
-    /// 호출 시 모니터링을 중단할 수 있는 alert을 열어
-    /// 현재 모니터링 중인 스케줄의 모니터링을 중단할 수 있습니다.
-    func showStopMonitoringAlert() {
-        isStopMonitoringAlertActive = true
     }
 }
 

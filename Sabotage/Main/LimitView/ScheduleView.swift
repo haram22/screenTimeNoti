@@ -40,26 +40,10 @@ struct ScheduleView: View {
             .alert("저장 되었습니다.", isPresented: $scheduleVM.isSaveAlertActive) {
                 Button("OK", role: .cancel) {}
             }
-            .alert("모니터링 중단 시 설정한 시간과 앱이 초기화됩니다.", isPresented: $scheduleVM.isStopMonitoringAlertActive) {
-                Button("취소", role: .cancel) {}
-                Button("확인", role: .destructive) {
-                    tempSelection = FamilyActivitySelection()
-                    scheduleVM.stopScheduleMonitoring()
-                }
-            }
-            .alert("권한 제거 시 스케쥴도 함께 제거됩니다.", isPresented: $scheduleVM.isRevokeAlertActive) {
-                Button("취소", role: .cancel) {}
-                Button("확인", role: .destructive) {
-                    FamilyControlsManager.shared.requestAuthorizationRevoke()
-                }
-            }
         }
         .onAppear {
             tempSelection = scheduleVM.selection
         }
-//        .onChange(of: colorScheme) { _ in
-//            tempSelection = scheduleVM.selection
-//        }
     }
 }
 
@@ -84,8 +68,6 @@ extension ScheduleView {
         List {
             setUpTimeSectionView()
             setUPAppSectionView()
-            stopScheduleMonitoringSectionView()
-            revokeAuthSectionView()
         }
         .listStyle(.insetGrouped)
     }
@@ -140,48 +122,7 @@ extension ScheduleView {
         }
     }
     
-    /// 전체 리스트 중 스케줄 모니터링 중단 섹션에 해당하는 뷰입니다.
-    private func stopScheduleMonitoringSectionView() -> some View {
-        Section(
-            header: Text(ScheduleSectionInfo.monitoring.header)
-        ) {
-            stopScheduleMonitoringButtonView()
-        }
-    }
     
-    /// 스케줄 모니터링 중단 섹션의 버튼에 해당하는 버튼입니다.
-    private func stopScheduleMonitoringButtonView() -> some View {
-        let BUTTON_LABEL = "스케줄 모니터링 중단"
-        
-        return Button {
-            scheduleVM.showStopMonitoringAlert()
-        } label: {
-            Text(BUTTON_LABEL)
-                .tint(Color.red)
-        }
-    }
-    
-    /// 전체 리스트 중 권한 제거 섹션에 해당하는 뷰입니다.
-    private func revokeAuthSectionView() -> some View {
-        Section(
-            header: Text(ScheduleSectionInfo.revoke.header)
-        ) {
-            revokeAuthButtonView()
-        }
-    }
-    
-    /// 권한 제거 섹션의 버튼에 해당하는 버튼입니다.
-    /// 버튼 클릭 시 alert 창을 통해 스크린 타임 권한을 제거할 수 있습니다.
-    private func revokeAuthButtonView() -> some View {
-        let BUTTON_LABEL = "스크린 타임 권한 제거"
-        
-        return Button {
-            scheduleVM.showRevokeAlert()
-        } label: {
-            Text(BUTTON_LABEL)
-                .tint(Color.red)
-        }
-    }
     
 }
 
@@ -196,10 +137,3 @@ extension ScheduleView {
     }
     
 }
-
-//struct ScheduleView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ScheduleView()
-//    }
-//}
-// 
