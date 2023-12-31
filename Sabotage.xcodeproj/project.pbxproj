@@ -55,6 +55,7 @@
 		8852C06B2B3C4B2800219714 /* AddActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C06A2B3C4B2800219714 /* AddActionItemController.swift */; };
 		8852C06D2B3C4B5C00219714 /* LimitItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C06C2B3C4B5C00219714 /* LimitItemVC.swift */; };
 		88637AB72B3C70ED006F1FF6 /* SaveActionItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88637AB62B3C70ED006F1FF6 /* SaveActionItemController.swift */; };
+		88A521042B41654F00CB1DCE /* RankingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A521032B41654F00CB1DCE /* RankingTableView.swift */; };
 		88ABDAB22B3EA3BD0011682E /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ABDAB12B3EA3BD0011682E /* PieChart.swift */; };
 		DB98B45E2DBF590A60210D39 /* Pods_Sabotage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BE09D05FFC7473D463C0201 /* Pods_Sabotage.framework */; };
 /* End PBXBuildFile section */
@@ -173,6 +174,7 @@
 		8852C06A2B3C4B2800219714 /* AddActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionItemController.swift; sourceTree = "<group>"; };
 		8852C06C2B3C4B5C00219714 /* LimitItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LimitItemVC.swift; path = "Sabotage/Preview Content/LimitItemVC.swift"; sourceTree = SOURCE_ROOT; };
 		88637AB62B3C70ED006F1FF6 /* SaveActionItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveActionItemController.swift; sourceTree = "<group>"; };
+		88A521032B41654F00CB1DCE /* RankingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableView.swift; sourceTree = "<group>"; };
 		88ABDAB12B3EA3BD0011682E /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		C1BCE96EF1EBB5C2257ED96E /* Pods-Sabotage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sabotage.debug.xcconfig"; path = "Target Support Files/Pods-Sabotage/Pods-Sabotage.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -409,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				8852C0602B3C4A7900219714 /* AnalysisVC.swift */,
+				88A521032B41654F00CB1DCE /* RankingTableView.swift */,
 			);
 			path = AnalysisView;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88A521042B41654F00CB1DCE /* RankingTableView.swift in Sources */,
 				2169E8372B3DD3A600A8DC07 /* ScreenTimeVMSU.swift in Sources */,
 				210B7B472B4018CF00D4105D /* ActionApi.swift in Sources */,
 				210B7B492B4018D800D4105D /* LimitApi.swift in Sources */,

@@ -5,6 +5,10 @@ import SnapKit
 import Then
 
 class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
+    
+    // tableview data
+    weak var delegate: LimitItemDelegate?
+    
     var isDatePickerVisible = false
     var isDatePickerVisible2 = false
     let dailyBudgetButton = UIButton()
@@ -359,18 +363,28 @@ class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
     // "완료" 버튼 클릭 시
     @objc func completeButtonTapped() {
         // Check if inputName meets the character limit
-        if let text = inputName.text, !text.isEmpty, text.count <= 3 {
-            // If it's within the limit, proceed to the MainVC
-            let completeActionItemController = MainVC()
-            navigationController?.pushViewController(completeActionItemController, animated: true)
-            // Hide the error label if validation passes
-            errorLabel.isHidden = true
-            limitPostRequest(with: 1, title: "title", apps: ["a", "b"], timeBudget: 2)
+
+//         if let text = inputName.text, !text.isEmpty, text.count <= 3 {
+//             // If it's within the limit, proceed to the MainVC
+//             let completeActionItemController = MainVC()
+//             navigationController?.pushViewController(completeActionItemController, animated: true)
+//             // Hide the error label if validation passes
+//             errorLabel.isHidden = true
+//             limitPostRequest(with: 1, title: "title", apps: ["a", "b"], timeBudget: 2)
+
+        if let text = inputName.text, !text.isEmpty, text.count <= 10 {
+            // If it's within the limit, proceed to update the MainVC's data
+            delegate?.addNewLimitItem(text)
+            
+            // Dismiss the LimitItemController
+            navigationController?.popViewController(animated: true)
+
         } else {
-            // If it exceeds the limit, show an error message and display the error label
-            errorLabel.text = "3자 이내로 작성해주세요"
+            errorLabel.text = "10자 이내로 작성해주세요"
             errorLabel.isHidden = false
         }
+        
+        
         print("그룹 이름 : \(String(describing: inputName.text))")
         print("제한 중인 앱 : \(FamilyActivitySelection().applications)")
         print("하루 총 사용 시간 : \(timeLabel.text)")
@@ -437,4 +451,3 @@ extension LimitItemController {
         inputName.delegate = self
     }
 }
-
