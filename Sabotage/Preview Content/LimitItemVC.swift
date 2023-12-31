@@ -5,6 +5,7 @@ import SnapKit
 import Then
 
 // limit item
+// why??
 class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
     
     // tableview data
