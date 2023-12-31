@@ -27,7 +27,7 @@ class AnalysisVC: UIViewController {
     func scrollViewUI() {
         // MARK: - UIScrollView 생성
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .orange
+        scrollView.backgroundColor = .white
         view.addSubview(scrollView)
         
         // MARK: ScrollView autolayout 설정
@@ -42,18 +42,22 @@ class AnalysisVC: UIViewController {
     func contentViewUI() {
         // MARK: - 스크롤뷰 content 추가
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.backgroundColor = .blue
+        contentView.backgroundColor = .white
         scrollView.addSubview(contentView)
-        
-        // MARK: - contentView의 오토레이아웃 설정
+
+        // MARK: - contentView의 오토레이아웃 설정 -> 이거 해야 스크롤 됨.
+        let contentViewHeightConstraint = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+        contentViewHeightConstraint.priority = .defaultLow
+        contentViewHeightConstraint.isActive = true
+
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-//            contentView.heightAnchor.constraint(equalToConstant: 1000),
         ])
+
     }
     
     func titleUI() {
@@ -90,20 +94,16 @@ class AnalysisVC: UIViewController {
         
         NSLayoutConstraint.activate([
             label1.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
-            label1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            label1.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            label1.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             label2.topAnchor.constraint(equalTo: label1.bottomAnchor, constant: 50),
-            label2.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            label2.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            label2.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             label3.topAnchor.constraint(equalTo: label2.bottomAnchor, constant: 50), // label3의 topAnchor를 label2의 bottomAnchor에 연결
-            label3.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            label3.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            label3.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             label4.topAnchor.constraint(equalTo: label3.bottomAnchor, constant: 50), // label4의 topAnchor를 label3의 bottomAnchor에 연결
-            label4.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            label4.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            label4.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
         ])
     }
     
@@ -115,24 +115,25 @@ class AnalysisVC: UIViewController {
         rankingBG.translatesAutoresizingMaskIntoConstraints = false
         rankingBG.contentMode = .scaleAspectFit
         rankingBG.backgroundColor = .base200
+        rankingBG.layer.cornerRadius = 20 // 모서리를 둥글게 만드는 코드
+        rankingBG.layer.masksToBounds = true // 모서리 이외의 부분을 잘라내는 코드
         contentView.addSubview(rankingBG)
         
         NSLayoutConstraint.activate([
             // 배경 이미지 뷰 위치 설정
-            rankingBG.topAnchor.constraint(equalTo: label2.bottomAnchor, constant: 5),
-            rankingBG.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
-            rankingBG.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
+            rankingBG.topAnchor.constraint(equalTo: label2.topAnchor, constant: -10),
+            rankingBG.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            rankingBG.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             rankingBG.heightAnchor.constraint(equalToConstant: CGFloat(rankingTableView.cellCount * 50)),
             
             // 테이블 뷰 위치 설정
             rankingTableView.topAnchor.constraint(equalTo: label2.bottomAnchor, constant: 20),
             rankingTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             rankingTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            rankingTableView.heightAnchor.constraint(equalToConstant: CGFloat(rankingTableView.cellCount * 50)-20),
+            rankingTableView.heightAnchor.constraint(equalToConstant: CGFloat(rankingTableView.cellCount * 50)+100),
         ])
         
         // 테이블 뷰를 배경 이미지 뷰 위에 올리기
         contentView.sendSubviewToBack(rankingBG)
     }
-
 }
