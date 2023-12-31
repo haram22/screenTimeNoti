@@ -25,7 +25,7 @@ class RankingTableView: UIView, UITableViewDataSource, UITableViewDelegate {
         
         // Remove cell separator
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .base200
+        tableView.backgroundColor = .base100
         
 //        tableView.backgroundColor = .systemGroupedBackground
         

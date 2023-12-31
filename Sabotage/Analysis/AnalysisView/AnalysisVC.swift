@@ -114,14 +114,14 @@ class AnalysisVC: UIViewController {
         
         rankingBG.translatesAutoresizingMaskIntoConstraints = false
         rankingBG.contentMode = .scaleAspectFit
-        rankingBG.backgroundColor = .base200
+        rankingBG.backgroundColor = .base400
         rankingBG.layer.cornerRadius = 20 // 모서리를 둥글게 만드는 코드
         rankingBG.layer.masksToBounds = true // 모서리 이외의 부분을 잘라내는 코드
         contentView.addSubview(rankingBG)
         
         NSLayoutConstraint.activate([
             // 배경 이미지 뷰 위치 설정
-            rankingBG.topAnchor.constraint(equalTo: label2.topAnchor, constant: -10),
+            rankingBG.topAnchor.constraint(equalTo: label2.topAnchor, constant: -20),
             rankingBG.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             rankingBG.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             rankingBG.heightAnchor.constraint(equalToConstant: CGFloat(rankingTableView.cellCount * 50)),
@@ -130,7 +130,7 @@ class AnalysisVC: UIViewController {
             rankingTableView.topAnchor.constraint(equalTo: label2.bottomAnchor, constant: 20),
             rankingTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             rankingTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            rankingTableView.heightAnchor.constraint(equalToConstant: CGFloat(rankingTableView.cellCount * 50)+100),
+            rankingTableView.heightAnchor.constraint(equalToConstant: CGFloat(rankingTableView.cellCount * 50)+20),
         ])
         
         // 테이블 뷰를 배경 이미지 뷰 위에 올리기
