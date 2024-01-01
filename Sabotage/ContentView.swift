@@ -13,6 +13,8 @@ struct ContentView: View {
                 .navigationBarHidden(true) // 네비게이션 바 숨김
 
         }
+        
+        
     }
 }
 
