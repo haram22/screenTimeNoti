@@ -16,7 +16,7 @@ struct ScreenTime_SabotageApp: App {
         Task {
             handleRequestAuthorization()
             requestNotificationPermission()
-//            initUUID()
+            initUUID()
         }
     }
     var body: some Scene {

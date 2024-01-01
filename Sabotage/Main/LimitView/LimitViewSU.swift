@@ -28,11 +28,15 @@ struct ScheduleView: View {
     @State private var isNudgeTimePickerShown = false
     
     
-    @State private var selectedHours = 0
-    @State private var selectedMinutes = 0
-    let hours = Array(0...23)
-    let minutes = Array(0...59)
+    @State private var selectedGoalHours = 0
+    @State private var selectedGoalMinutes = 0
+    @State private var selectedNudgeHours = 0
+    @State private var selectedNudgeMinutes = 0
     
+    
+    @State private var selectedMinute: Int = 0
+    let minutes = Array(0...59)
+    let hours = Array(0...23)
     var body: some View {
         NavigationView {
             VStack {
@@ -62,7 +66,7 @@ struct ScheduleView: View {
 extension ScheduleView {
     private func savePlanButtonView() -> ToolbarItemGroup<Button<Text>> {
         ToolbarItemGroup(placement: .navigationBarTrailing) {
-            let BUTTON_LABEL = "저장하기"
+            let BUTTON_LABEL = "저장하기s"
             
             Button {
                 scheduleVM.saveSchedule(selectedApps: tempSelection)
@@ -146,23 +150,34 @@ extension ScheduleView {
                             Text(BUTTON_LABEL).foregroundColor(Color.primary700)
                         }
                     }
-                    HStack{
+                    VStack(alignment: .leading) { // VStack의 정렬 방향을 .leading으로 설정
                         ForEach(Array(tempSelection.applicationTokens), id: \.self) { token in
-                            Label(token)
+                            HStack {
+                                Label(token)
+                                Spacer() // 나머지 공간을 채워서 Text를 왼쪽으로 밀어냄
+                            }
                         }
                         ForEach(Array(tempSelection.categoryTokens), id: \.self) { token in
-                            Label(token)
+                            HStack {
+                                Label(token)
+                                Spacer()
+                            }
                         }
                         ForEach(Array(tempSelection.webDomainTokens), id: \.self) { token in
-                            Label(token)
+                            HStack {
+                                Label(token)
+                                Spacer()
+                            }
                         }
-                        Spacer()
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading) // VStack을 뷰의 왼쪽 가장자리로 정렬
+
                 }
             }
         }
     }
     private func setUpGoalTimeView(selectedTime: Binding<Date>, isPickerPresented: Binding<Bool>) -> some View {
+        
         let timeFormatter: DateFormatter = {
             let formatter = DateFormatter()
             formatter.dateFormat = "HH 'Hours' mm 'min'" // 24시간 형식에 "Hours", "min"을 추가합니다.
@@ -179,22 +194,48 @@ extension ScheduleView {
                             .font(.system(size: 18))
                             .foregroundColor(.primary)
                         Spacer()
-                        Text(timeFormatter.string(from: selectedTime.wrappedValue))
+                        //                        Text(timeFormatter.string(from: selectedTime.wrappedValue))
+                        Text("\(selectedGoalHours) hours \(selectedGoalMinutes) min")
                             .foregroundColor(.secondary)
                     }
                 }
                 .padding(.vertical)
                 
                 if isGoalTimePickerShown {
-                    DatePicker(
-                        "시간 선택",
-                        selection: selectedTime,
-                        displayedComponents: .hourAndMinute
-                    )
-                    .datePickerStyle(WheelDatePickerStyle())
-                    .labelsHidden()
-                    .transition(.slide)
-                    .frame(maxHeight: 216)
+                    ZStack {
+                        // 카운트다운 타이머
+                        HStack {
+                            Picker("Hours", selection: $selectedGoalHours) {
+                                ForEach(hours, id: \.self) { hour in
+                                    Text("\(hour)").tag(hour)
+                                }.foregroundColor(.green)
+                            }
+                            .pickerStyle(WheelPickerStyle())
+                            .frame(width: 70)
+                            .compositingGroup()
+                            
+                            Text("hours")
+                                .foregroundColor(.secondary)
+                            
+                            Picker("Minutes", selection: $selectedGoalMinutes) {
+                                ForEach(minutes, id: \.self) { minute in
+                                    Text("\(minute)").tag(minute)
+                                }.foregroundColor(.green)
+                            }
+                            .pickerStyle(WheelPickerStyle())
+                            .frame(width: 70)
+                            .clipped()
+                            .compositingGroup()
+                            
+                            Text("min")
+                                .foregroundColor(.secondary)
+                        }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(10)
+//                        Image("GreenFrame") .resizable()
+//                            .scaledToFit()
+                    }
                 }
             }
         }
@@ -202,7 +243,7 @@ extension ScheduleView {
     private func setUpNudgeTimeView(selectedTime: Binding<Date>, isPickerPresented: Binding<Bool>) -> some View {
         let timeFormatter: DateFormatter = {
             let formatter = DateFormatter()
-            formatter.dateFormat = "HH 'Hours' mm 'min'" // 24시간 형식에 "Hours", "min"을 추가합니다.
+            formatter.dateFormat = "$min 'Hours' mm 'min'" // 24시간 형식에 "Hours", "min"을 추가합니다.
             return formatter
         }()
         
@@ -216,17 +257,17 @@ extension ScheduleView {
                             .font(.system(size: 18))
                             .foregroundColor(.primary)
                         Spacer()
-                        Text(timeFormatter.string(from: selectedTime.wrappedValue))
+                        Text("\(selectedNudgeHours) hours \(selectedNudgeMinutes) min")
                             .foregroundColor(.secondary)
                     }
                 }
                 .padding(.vertical)
                 
                 if isNudgePickerPresented {
-                    VStack {
+                    ZStack {
                         // 카운트다운 타이머
                         HStack {
-                            Picker("Hours", selection: $selectedHours) {
+                            Picker("Hours", selection: $selectedNudgeHours) {
                                 ForEach(hours, id: \.self) { hour in
                                     Text("\(hour)").tag(hour)
                                 }
@@ -239,7 +280,7 @@ extension ScheduleView {
                             Text("hours")
                                 .foregroundColor(.secondary)
                             
-                            Picker("Minutes", selection: $selectedMinutes) {
+                            Picker("Minutes", selection: $selectedNudgeMinutes) {
                                 ForEach(minutes, id: \.self) { minute in
                                     Text("\(minute)").tag(minute)
                                 }
@@ -253,13 +294,8 @@ extension ScheduleView {
                                 .foregroundColor(.secondary)
                         }
                         .padding()
-                        .background(Color.green)
+                        .background(Color.white)
                         .cornerRadius(10)
-                        
-                        // Display the selected time
-                        Text("\(selectedHours) hours \(selectedMinutes) min")
-                            .font(.headline)
-                            .padding()
                     }
                 }
             }
@@ -268,7 +304,11 @@ extension ScheduleView {
     private func setButtons() -> some View{
         return VStack{
             Button("저장하기") {
-                // '저장하기' 버튼의 액션을 여기에 작성
+                scheduleVM.saveSchedule(selectedApps: tempSelection)
+                print("tempSelection = \(tempSelection)")
+                print("selectedNudge = \(selectedNudgeHours):\(selectedMinute)")
+                print("selectedGoalHours = \(selectedGoalHours):\(selectedGoalMinutes)")
+                
             }
             .padding()
             .frame(maxWidth: .infinity)

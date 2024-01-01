@@ -11,7 +11,7 @@ import UIKit
 
 var limitData: LimitDummyDataType? //초기값도 모르기 때문에 옵셔널 ? 붙여준다.
 
-let urlLink = "http://119.202.103.118:8080/" // 서버 주소
+let urlLink = "http://119.202.103.118:8080/api/" // 서버 주소
 
 // MARK: - Create _ 데이터를 서버에 추가하는 함수
 //func makePostRequest(with imgUrl: String, name: String, age: Int, part: String) {

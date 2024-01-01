@@ -11,7 +11,7 @@ import SwiftUI
 
 func deviceIDPostRequest(with userId: String) {
     // 서버 링크가 유요한지 확인
-    guard let url = URL(string: "\(urlLink)user/\(userId)") else {
+    guard let url = URL(string: "\(urlLink)user") else {
         print("🚨 Invalid URL")
         return
     }
@@ -24,9 +24,9 @@ func deviceIDPostRequest(with userId: String) {
 
     // POST로 요청할 경우 : json 형식으로 데이터 넘기기
     let body: [String: AnyHashable] = [
-        "deviceId": "string"
+        "deviceId": userId
     ]
-    request.httpBody = try? JSONSerialization.data(withJSONObject: url, options: .fragmentsAllowed)
+    request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
 
     // data task 생성하기
     let task = URLSession.shared.dataTask(with: request) { data, _, error in

@@ -64,14 +64,12 @@
 		21741A162B4170020062B0D7 /* Bundle_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169E82F2B3D79F400A8DC07 /* Bundle_Extension.swift */; };
 		21741A1B2B417CCB0062B0D7 /* DeviceActivityMonitor.appex in Resources */ = {isa = PBXBuildFile; fileRef = 2169E7D72B3D750C00A8DC07 /* DeviceActivityMonitor.appex */; };
 		21741A1E2B417D520062B0D7 /* MonitoringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21741A1D2B417D520062B0D7 /* MonitoringView.swift */; };
-		21750E062B4159BA004E9A04 /* LimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21750E052B4159BA004E9A04 /* LimitView.swift */; };
+		21750E062B4159BA004E9A04 /* LimitViewSU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21750E052B4159BA004E9A04 /* LimitViewSU.swift */; };
 		21E458782B41984300AFC7F4 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E458772B41984300AFC7F4 /* Colors.xcassets */; };
-
 		21E4587C2B41F22D00AFC7F4 /* DeviceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4587B2B41F22D00AFC7F4 /* DeviceID.swift */; };
 		21E4587F2B42007800AFC7F4 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4587E2B42007800AFC7F4 /* Buttons.swift */; };
-
+		21EE38932B4296F7001AD158 /* LimitViewPickerSU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21EE38922B4296F7001AD158 /* LimitViewPickerSU.swift */; };
 		8800F0A72B421A25005CB6D2 /* FontSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8800F0A62B421A25005CB6D2 /* FontSystem.swift */; };
-
 		8852C05D2B3C491600219714 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C05C2B3C491600219714 /* ProfileVC.swift */; };
 		8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0602B3C4A7900219714 /* AnalysisVC.swift */; };
 		8852C0652B3C4AB300219714 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852C0642B3C4AB300219714 /* MainVC.swift */; };
@@ -192,10 +190,11 @@
 		2169E8382B3DD42C00A8DC07 /* AppStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStorageManager.swift; sourceTree = "<group>"; };
 		21741A092B41699E0062B0D7 /* shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = shared.xcconfig; sourceTree = "<group>"; };
 		21741A1D2B417D520062B0D7 /* MonitoringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitoringView.swift; sourceTree = "<group>"; };
-		21750E052B4159BA004E9A04 /* LimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitView.swift; sourceTree = "<group>"; };
+		21750E052B4159BA004E9A04 /* LimitViewSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitViewSU.swift; sourceTree = "<group>"; };
 		21E458772B41984300AFC7F4 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		21E4587B2B41F22D00AFC7F4 /* DeviceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceID.swift; sourceTree = "<group>"; };
 		21E4587E2B42007800AFC7F4 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		21EE38922B4296F7001AD158 /* LimitViewPickerSU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitViewPickerSU.swift; sourceTree = "<group>"; };
 		5BE09D05FFC7473D463C0201 /* Pods_Sabotage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sabotage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8800F0A62B421A25005CB6D2 /* FontSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSystem.swift; sourceTree = "<group>"; };
 		8852C05C2B3C491600219714 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -311,12 +310,8 @@
 		214CC47F2B3C4782003B74EB /* Sabotage */ = {
 			isa = PBXGroup;
 			children = (
-
 				21E4587D2B42006800AFC7F4 /* Common */,
-
 				8800F0A52B421A0C005CB6D2 /* Design System */,
-				21741A1F2B417FBA0062B0D7 /* NotiTest */,
-
 				21741A1C2B417CE50062B0D7 /* monitor */,
 				210B7B432B40175D00D4105D /* ServerAPI */,
 				2169E8332B3D958F00A8DC07 /* Info.plist */,
@@ -520,9 +515,10 @@
 			children = (
 				210B7B2B2B3FF2BA00D4105D /* LimitTable */,
 				8852C06C2B3C4B5C00219714 /* LimitItemVC.swift */,
-				21750E052B4159BA004E9A04 /* LimitView.swift */,
+				21750E052B4159BA004E9A04 /* LimitViewSU.swift */,
 				2169E8342B3DA3FD00A8DC07 /* SelectLimitAppVMSU.swift */,
 				210B7B3F2B400DD600D4105D /* LimitModel.swift */,
+				21EE38922B4296F7001AD158 /* LimitViewPickerSU.swift */,
 			);
 			path = LimitView;
 			sourceTree = "<group>";
@@ -792,6 +788,7 @@
 				21741A1E2B417D520062B0D7 /* MonitoringView.swift in Sources */,
 				210B7B472B4018CF00D4105D /* ActionApi.swift in Sources */,
 				210B7B492B4018D800D4105D /* LimitApi.swift in Sources */,
+				21EE38932B4296F7001AD158 /* LimitViewPickerSU.swift in Sources */,
 				8852C0692B3C4B1300219714 /* ActionItemController.swift in Sources */,
 				8800F0A72B421A25005CB6D2 /* FontSystem.swift in Sources */,
 				2169E8222B3D778600A8DC07 /* FamilyControlManager.swift in Sources */,
@@ -799,7 +796,7 @@
 				210B7B3A2B400D6F00D4105D /* ActionModel.swift in Sources */,
 				210B7B382B400D5100D4105D /* ActionTableViewCell.swift in Sources */,
 				21741A122B416FCE0062B0D7 /* TotalActivityView.swift in Sources */,
-				21750E062B4159BA004E9A04 /* LimitView.swift in Sources */,
+				21750E062B4159BA004E9A04 /* LimitViewSU.swift in Sources */,
 				8852C0612B3C4A7900219714 /* AnalysisVC.swift in Sources */,
 				2169E8282B3D78C100A8DC07 /* PermissionViewSU.swift in Sources */,
 				88637AB72B3C70ED006F1FF6 /* SaveActionItemController.swift in Sources */,
