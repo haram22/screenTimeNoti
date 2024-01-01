@@ -237,22 +237,22 @@ class MainVC: UIViewController, LimitItemDelegate {
         }
     
     @objc func actionButtonTapped() {
-//        let actionItemController = ActionItemController()
-//        navigationController?.pushViewController(actionItemController, animated: true)
+        let actionItemController = ActionItemController()
+        navigationController?.pushViewController(actionItemController, animated: true)
         let monitoringView = MonitoringView()
 
         // SwiftUI 뷰를 호스팅하는 UIHostingController 생성
-        let hostingController = UIHostingController(rootView: monitoringView)
-
+//        let hostingController = UIHostingController(rootView: monitoringView)
+        actionPostRequest(with: 0, title: "title", apps: ["String", "string2"], timeBudget: 0)
         // 네비게이션 컨트롤러를 사용하여 화면 전환
-        navigationController?.pushViewController(hostingController, animated: true)
+//        navigationController?.pushViewController(hostingController, animated: true)
     }
 
 
     // LimitItemController로 이동하는 액션 메서드
     @objc func addButtonTapped() {
 
-//        let limitItemController = LimitItemController()
+        let limitItemController = LimitItemController()
 //        limitItemController.delegate = self // LimitItemDelegate 설정
 //        navigationController?.pushViewController(limitItemController, animated: true)
 
