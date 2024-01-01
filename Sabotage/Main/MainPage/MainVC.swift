@@ -9,18 +9,11 @@ protocol LimitItemDelegate: AnyObject {
     func addNewLimitItem(_ itemName: String)
 }
 
-protocol ActionItemDelegate: AnyObject {
-    func didActionItemText(_ username: String)
-}
-
-protocol AddActionItemDelegate: AnyObject {
-    func didAddActionItemText(_ usertext: String)
-}
-
-class MainVC: UIViewController, LimitItemDelegate, ActionItemDelegate, AddActionItemDelegate {
+class MainVC: UIViewController, LimitItemDelegate, ActionItemDelegate{
 
     var segmentedControl = UISegmentedControl()
     var actionButton = UIButton(type: .system)
+    var limitButton = UIButton(type: .system)
     var addButton = UIButton(type: .system)
     var tabBar = UITabBar()
     
@@ -55,36 +48,21 @@ class MainVC: UIViewController, LimitItemDelegate, ActionItemDelegate, AddAction
     }
     
     // tableview data
-    // ActionItemDelegate 메서드 구현
-//    func didAddActionItemText(_ usertext: String) {
-//        // ActionItemController에서 전달된 text을 기존 데이터에 추가
-//        let newActionItem = ActionDummyDataType(title: usertext, description: "새로운 항목 설명")
-//        actionItems.append(newActionItem)
-//
-//        // TableView 업데이트
-//        actionTableView.reloadData()
-//    }
-
-//    // ActionItemDelegate 메서드 구현    
 //    func didAddActionItemText(_ text: String) {
-//        // ActionItemController에서 전달된 text을 기존 데이터에 추가
-//        let newActionItem = ActionDummyDataType(title: text, description: "사용자 입력")
+//        print("AddActionItemController에서 받은 데이터: \(text)")
+//        let newActionItem = ActionDummyDataType(title: text, description: "새로운 항목 설명")
 //        actionItems.append(newActionItem)
-//
-//        // TableView 업데이트
 //        actionTableView.reloadData()
 //    }
-//    
     func didAddActionItemText(_ text: String) {
-        let newActionItem = ActionDummyDataType(title: text, description: "새로운 항목 설명")
+        // Handle the received text here and update your table view data source
+        // For example, add it to your actionItems array and then reload the table view
+        let newActionItem = ActionDummyDataType(title: text, description: "New Description")
         actionItems.append(newActionItem)
         actionTableView.reloadData()
     }
 
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         limitTableView = UITableView(frame: .zero, style: .plain)
@@ -196,30 +174,31 @@ class MainVC: UIViewController, LimitItemDelegate, ActionItemDelegate, AddAction
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             actionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            actionButton.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 30),
+            actionButton.topAnchor.constraint(equalTo: actionTableView.bottomAnchor, constant: -80),
             actionButton.widthAnchor.constraint(equalToConstant: 350),
             actionButton.heightAnchor.constraint(equalToConstant: 80)
         ])
+        
+        limitButton.setTitle("+", for: .normal)
+        limitButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        limitButton.layer.cornerRadius = 25 // 테두리 둥글기 설정
+        limitButton.layer.borderWidth = 1 // 테두리 두께 설정
+        limitButton.layer.borderColor = UIColor.black.cgColor // 테두리 색상 설정
+        limitButton.addTarget(self, action: #selector(limitButtonTapped), for: .touchUpInside)
+        limitButton.isHidden = true // 버튼을 처음부터 보이도록 변경
+
+        view.addSubview(limitButton)
+
+        limitButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            limitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            limitButton.topAnchor.constraint(equalTo: limitTableView.bottomAnchor, constant: -80),
+            limitButton.widthAnchor.constraint(equalToConstant: 350),
+            limitButton.heightAnchor.constraint(equalToConstant: 80)
+        ])
+        
+        
        
-//        tabBar.delegate = self
-//        view.addSubview(tabBar)
-        
-//        // UITabBar constraints 설정
-//        tabBar.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            tabBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            tabBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            tabBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            tabBar.heightAnchor.constraint(equalToConstant: 50)
-//        ])
-        
-//        // Tab bar 내용
-//        let homeItem = UITabBarItem(title: "Home", image: nil, tag: 0)
-//        let analysisItem = UITabBarItem(title: "Analysis", image: nil, tag: 1)
-//        let profileItem = UITabBarItem(title: "Profile", image: nil, tag: 2)
-//
-        // Set UITabBarItems to the UITabBar
-//        tabBar.setItems([homeItem, analysisItem, profileItem], animated: false)
     }
 
     private func configureTableView(_ tableView: UITableView, cellClass: UITableViewCell.Type, identifier: String) {
@@ -295,44 +274,36 @@ class MainVC: UIViewController, LimitItemDelegate, ActionItemDelegate, AddAction
     
     // 토글 선택 시 상황
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-            if sender.selectedSegmentIndex == 0 {
-                actionTableView.isHidden = false
-                limitTableView.isHidden = true
-            } else {
-                actionTableView.isHidden = true
-                limitTableView.isHidden = false
-            }
+        if sender.selectedSegmentIndex == 0 {
+            // Show actionButton and hide limitButton
+            actionButton.isHidden = false
+            limitButton.isHidden = true
+            actionTableView.isHidden = false
+            limitTableView.isHidden = true
+        } else {
+            // Hide actionButton and show limitButton
+            actionButton.isHidden = true
+            limitButton.isHidden = false
+            actionTableView.isHidden = true
+            limitTableView.isHidden = false
         }
+    }
+
     
     @objc func actionButtonTapped() {
-        
         let actionItemController = ActionItemController()
-        actionItemController.delegate = self
-        
-        let addActionItemController = AddActionItemController()
-        addActionItemController.delegate = self // delegate 설정
-        
+        actionItemController.delegate = self // Set MainVC as the delegate for ActionItemController
         navigationController?.pushViewController(actionItemController, animated: true)
 //        //MARK: 서윤 - saveactionitem 확인
 //        let saveActionItemController = SaveActionItemController()
 //        navigationController?.pushViewController(saveActionItemController, animated: true)
+    }
 
+    
+    @objc func limitButtonTapped() {
+        let limitItemController = LimitItemController()
+        navigationController?.pushViewController(limitItemController, animated: true)
         
-//        let monitoringView = MonitoringView()
-
-        // SwiftUI 뷰를 호스팅하는 UIHostingController 생성
-//        let hostingController = UIHostingController(rootView: monitoringView)
-//        let actionItemController = ActionItemController()
-//        navigationController?.pushViewController(actionItemController, animated: true)
-//        let monitoringView = MonitoringView()
-
-        // SwiftUI 뷰를 호스팅하는 UIHostingController 생성
-//        let hostingController = UIHostingController(rootView: monitoringView)
-
-//         actionPostRequest(with: 0, title: "title", apps: ["String", "string2"], timeBudget: 0)
-
-        // 네비게이션 컨트롤러를 사용하여 화면 전환
-//        navigationController?.pushViewController(hostingController, animated: true)
     }
 
 
