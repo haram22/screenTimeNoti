@@ -115,23 +115,23 @@ class MainVC: UIViewController, LimitItemDelegate {
         ])
         // MARK: - 디자인때 필요할 것 같아서 남겨뒀움
         // "액션 아이템" 추가 버튼
-//        actionButton.setTitle("+", for: .normal)
-//        actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
-//        actionButton.layer.cornerRadius = 25 // 테두리 둥글기 설정
-//        actionButton.layer.borderWidth = 1 // 테두리 두께 설정
-//        actionButton.layer.borderColor = UIColor.black.cgColor // 테두리 색상 설정
-//        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
-//        actionButton.isHidden = false // 버튼을 처음부터 보이도록 변경
-//
-//        view.addSubview(actionButton)
-//
-//        actionButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            actionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            actionButton.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 30),
-//            actionButton.widthAnchor.constraint(equalToConstant: 350),
-//            actionButton.heightAnchor.constraint(equalToConstant: 80)
-//        ])
+        actionButton.setTitle("+", for: .normal)
+        actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        actionButton.layer.cornerRadius = 25 // 테두리 둥글기 설정
+        actionButton.layer.borderWidth = 1 // 테두리 두께 설정
+        actionButton.layer.borderColor = UIColor.black.cgColor // 테두리 색상 설정
+        actionButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
+        actionButton.isHidden = false // 버튼을 처음부터 보이도록 변경
+
+        view.addSubview(actionButton)
+
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            actionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            actionButton.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 30),
+            actionButton.widthAnchor.constraint(equalToConstant: 350),
+            actionButton.heightAnchor.constraint(equalToConstant: 80)
+        ])
        
 //        tabBar.delegate = self
 //        view.addSubview(tabBar)
@@ -243,7 +243,9 @@ class MainVC: UIViewController, LimitItemDelegate {
 
         // SwiftUI 뷰를 호스팅하는 UIHostingController 생성
 //        let hostingController = UIHostingController(rootView: monitoringView)
-        actionPostRequest(with: 0, title: "title", apps: ["String", "string2"], timeBudget: 0)
+
+//         actionPostRequest(with: 0, title: "title", apps: ["String", "string2"], timeBudget: 0)
+
         // 네비게이션 컨트롤러를 사용하여 화면 전환
 //        navigationController?.pushViewController(hostingController, animated: true)
     }
@@ -268,5 +270,6 @@ class MainVC: UIViewController, LimitItemDelegate {
          navigationController?.pushViewController(hostingController, animated: true)
 
     }
+    
 
 }
