@@ -6,7 +6,7 @@ import Then
 
 class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
     
-    // tableview data
+    // LimitView tableview data
     weak var delegate: LimitItemDelegate?
     
     var isDatePickerVisible = false
