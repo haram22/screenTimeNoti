@@ -6,7 +6,7 @@ import Then
 
 class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
     
-    // tableview data
+    // LimitView tableview data
     weak var delegate: LimitItemDelegate?
     
     var isDatePickerVisible = false
@@ -375,7 +375,7 @@ class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
         if let text = inputName.text, !text.isEmpty, text.count <= 10 {
             // If it's within the limit, proceed to update the MainVC's data
             delegate?.addNewLimitItem(text)
-            limitPostRequest(with: 0, title: "title", apps: ["a", "b"], timeBudget: 0)
+//            limitPostRequest(with: 0, title: "title", apps: ["a", "b"], timeBudget: 0)
             // Dismiss the LimitItemController
             navigationController?.popViewController(animated: true)
             

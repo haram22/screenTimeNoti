@@ -1,56 +1,47 @@
-//
-//  FontSystem.swift
-//  Sabotage
-//
-//  Created by 오성진 on 1/1/24.
-//
-
 import SwiftUI
 
 extension Font {
-    static var largeTitleCustom: Font {
-        return Font.custom("LargeTitle-Regular", size: 34)
+    static func largeTitle() -> Font {
+        return Font.custom("AppleSDGothicNeoB", size: 34.0)
     }
     
-    static var title1Custom: Font {
-        return Font.custom("Title1-Regular", size: 28)
+    static func title1() -> Font {
+        return Font.custom("AppleSDGothicNeo-Regular", size: 28.0)
     }
     
-    static var title2Custom: Font {
-        return Font.custom("Title2-Regular", size: 22)
+    static func title2() -> Font {
+        return Font.custom("AppleSDGothicNeo-Regular", size: 22.0)
     }
     
-    static var title3Custom: Font {
-        return Font.custom("Title3-Regular", size: 20)
+    static func title3() -> Font {
+        return Font.custom("AppleSDGothicNeo-Regular", size: 20.0)
     }
     
-    static var headlineCustom: Font {
-        return Font.custom("Headline-Semibold", size: 17)
+    static func headline() -> Font {
+        return Font.custom("AppleSDGothicNeo-Regular", size: 17.0)
     }
     
-    static var bodyCustom: Font {
-        return Font.custom("Body-Regular", size: 17)
+    static func body() -> Font {
+        return Font.custom("AppleSDGothicNeo-Regular", size: 17.0)
     }
     
-    static var calloutCustom: Font {
-        return Font.custom("Callout-Regular", size: 16)
+    static func callout() -> Font {
+        return Font.custom("AppleSDGothicNeo-Regular", size: 16.0)
     }
     
-    static var subheadCustom: Font {
-        return Font.custom("Subhead-Regular", size: 15)
+    static func subhead() -> Font {
+        return Font.custom("AppleSDGothicNeo-Regular", size: 15.0)
     }
     
-    static var footnoteCustom: Font {
-        return Font.custom("Footnote-Regular", size: 13)
+    static func footnote() -> Font {
+        return Font.custom("AppleSDGothicNeo-Regular", size: 13.0)
     }
     
-    static var caption1Custom: Font {
-        return Font.custom("Caption1-Regular", size: 12)
+    static func caption1() -> Font {
+        return Font.custom("AppleSDGothicNeo-Regular", size: 12.0)
     }
     
-    static var caption2Custom: Font {
-        return Font.custom("Caption2-Regular", size: 11)
+    static func caption2() -> Font {
+        return Font.custom("AppleSDGothicNeo-Regular", size: 11.0)
     }
 }
-
-
