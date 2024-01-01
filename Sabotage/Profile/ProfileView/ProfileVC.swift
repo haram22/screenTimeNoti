@@ -34,7 +34,7 @@ class ProfileVC: UIViewController {
             $0.text = "즐거운스누피1441"
             $0.textColor = .black
             $0.textAlignment = .center
-            $0.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .semibold)
+            $0.font = UIFont.Headline()
         }
         header.addSubview(headerLabel)
         
@@ -95,7 +95,7 @@ extension ProfileVC: UITableViewDataSource, UITableViewDelegate {
         
         let titleLabel = UILabel()
         
-        titleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        titleLabel.font = UIFont.Subhead()
         titleLabel.textColor = .base400
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         headerView.addSubview(titleLabel)

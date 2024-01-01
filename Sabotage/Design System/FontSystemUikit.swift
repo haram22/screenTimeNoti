@@ -30,7 +30,7 @@ extension UIFont {
     }
     static func Headline(size fontSize: CGFloat = 17.0) -> UIFont {
         let familyName = "Apple SD Gothic Neo"
-        let weightString = "Regular"
+        let weightString = "SemiBold"
         return UIFont(name: "\(familyName)-\(weightString)", size: fontSize) ?? .systemFont(ofSize: fontSize)
     }
     static func Body(size fontSize: CGFloat = 17.0) -> UIFont {
