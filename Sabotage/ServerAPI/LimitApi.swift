@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-func limitPostRequest(with userId: Int, title: String, apps: [String], timeBudget: Int) {
+func limitPostRequest(title: String, apps: [String], timeBudget: Int) {
     // 서버 링크가 유요한지 확인
     guard let url = URL(string: "\(urlLink)goalGroup") else {
         print("🚨 Invalid URL")
@@ -23,7 +23,7 @@ func limitPostRequest(with userId: Int, title: String, apps: [String], timeBudge
     
     // POST로 요청할 경우 : json 형식으로 데이터 넘기기
     let body:[String: AnyHashable] = [
-        "userId": 0,
+        "userId": userId,
           "title": "string",
           "apps": [
             "string"

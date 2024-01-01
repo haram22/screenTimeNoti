@@ -114,7 +114,7 @@ import SnapKit
 class SaveActionItemController: UIViewController, UITextFieldDelegate {
     
     ////*
-    weak var delegate: AddActionItemDelegate?
+//    weak var delegate: AddActionItemDelegate?
     var textField: UITextField = UITextField()
     var selectedButtonName: String? // 선택된 버튼의 이름을 저장하는 변수
 
@@ -272,7 +272,7 @@ class SaveActionItemController: UIViewController, UITextFieldDelegate {
             return
         }
 
-        delegate?.didAddActionItemText(text)
+//        delegate?.didAddActionItemText(text)
         
         print("⚽️ MainVC로 전달된 텍스트: \(text)") // 사용자가 작성한 목표 출력
         
