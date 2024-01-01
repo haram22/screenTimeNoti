@@ -312,8 +312,18 @@ class MainVC: UIViewController, LimitItemDelegate, ActionItemDelegate{
 
     
     @objc func limitButtonTapped() {
-        let limitItemController = LimitItemController()
-        navigationController?.pushViewController(limitItemController, animated: true)
+//        let limitItemController = LimitItemController()
+//        navigationController?.pushViewController(limitItemController, animated: true)
+//         MARK: - ram test code
+               print("addButtonTapped")
+               // SwiftUI 뷰 인스턴스 생성
+               let scheduleView = ScheduleView()
+      
+               // SwiftUI 뷰를 호스팅하는 UIHostingController 생성
+               let hostingController = UIHostingController(rootView: scheduleView)
+      
+      //          네비게이션 컨트롤러를 사용하여 화면 전환
+               navigationController?.pushViewController(hostingController, animated: true)
         
     }
 
