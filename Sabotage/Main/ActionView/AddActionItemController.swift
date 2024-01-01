@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+
 protocol ActionItemDelegate: AnyObject {
     func didAddActionItemText(_ text: String)
     // Add any other methods needed to pass data back to MainVC
@@ -71,6 +72,8 @@ class AddActionItemController: UIViewController, UITextFieldDelegate {
         textField.placeholder = "여기에 입력하세요"
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.returnKeyType = .done
+        textField.delegate = self
         
         // 텍스트 필드를 뷰에 추가
         view.addSubview(textField)
@@ -138,6 +141,11 @@ class AddActionItemController: UIViewController, UITextFieldDelegate {
     
     // Delegate를 통해 MainVC로 텍스트 이동되었는지 콘솔에서 확인
     @objc func completeButtonTapped() {
+
+//        actionPostRequest(category: <#T##String#>, content: <#T##String#>)
+//         let saveActionItemController = SaveActionItemController()
+//         navigationController?.pushViewController(saveActionItemController, animated: true)
+
         guard let text = self.textField.text else {
             print("입력된 텍스트가 비어 있습니다.")
             return
@@ -168,6 +176,11 @@ class AddActionItemController: UIViewController, UITextFieldDelegate {
         let gotoMainController = MainVC()
         navigationController?.pushViewController(gotoMainController, animated: true)
     }
+//     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//             textField.resignFirstResponder() // 키보드 숨기기
+//             return true
+//         }
+}
     
     // 다른 곳을 탭했을 때 키보드 숨기기
     @objc func dismissKeyBoard(sender: UITapGestureRecognizer) {
