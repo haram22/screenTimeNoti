@@ -9,7 +9,16 @@ protocol LimitItemDelegate: AnyObject {
     func addNewLimitItem(_ itemName: String)
 }
 
-class MainVC: UIViewController, LimitItemDelegate {
+protocol ActionItemDelegate: AnyObject {
+    func didActionItemText(_ username: String)
+}
+
+protocol AddActionItemDelegate: AnyObject {
+    func didAddActionItemText(_ usertext: String)
+}
+
+class MainVC: UIViewController, LimitItemDelegate, ActionItemDelegate, AddActionItemDelegate {
+
     var segmentedControl = UISegmentedControl()
     var actionButton = UIButton(type: .system)
     var addButton = UIButton(type: .system)
@@ -45,13 +54,47 @@ class MainVC: UIViewController, LimitItemDelegate {
         limitTableView.reloadData()
     }
     
+    // tableview data
+    // ActionItemDelegate 메서드 구현
+//    func didAddActionItemText(_ usertext: String) {
+//        // ActionItemController에서 전달된 text을 기존 데이터에 추가
+//        let newActionItem = ActionDummyDataType(title: usertext, description: "새로운 항목 설명")
+//        actionItems.append(newActionItem)
+//
+//        // TableView 업데이트
+//        actionTableView.reloadData()
+//    }
+
+//    // ActionItemDelegate 메서드 구현    
+//    func didAddActionItemText(_ text: String) {
+//        // ActionItemController에서 전달된 text을 기존 데이터에 추가
+//        let newActionItem = ActionDummyDataType(title: text, description: "사용자 입력")
+//        actionItems.append(newActionItem)
+//
+//        // TableView 업데이트
+//        actionTableView.reloadData()
+//    }
+//    
+    func didAddActionItemText(_ text: String) {
+        let newActionItem = ActionDummyDataType(title: text, description: "새로운 항목 설명")
+        actionItems.append(newActionItem)
+        actionTableView.reloadData()
+    }
+
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         limitTableView = UITableView(frame: .zero, style: .plain)
+        actionTableView = UITableView(frame: .zero, style: .plain)
+
         
         // 뷰에 테이블뷰 추가
         view.addSubview(limitTableView)
-        
+        view.addSubview(actionTableView)
+
         // Auto Layout을 위한 설정
         limitTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -60,17 +103,41 @@ class MainVC: UIViewController, LimitItemDelegate {
             limitTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             limitTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+        
+        // Auto Layout을 위한 설정
+        actionTableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            actionTableView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -500),
+            actionTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            actionTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            actionTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     
         actionTableView = UITableView(frame: .zero, style: .plain)
         configureTableView(actionTableView, cellClass: ActionTableViewCell.self, identifier: "ActionCustomCell")
                 
-                // limitTableView 설정
-                limitTableView = UITableView(frame: .zero, style: .plain)
+        // limitTableView 설정
+        limitTableView = UITableView(frame: .zero, style: .plain)
         configureTableView(limitTableView, cellClass: LimitTableViewCell.self, identifier: "LimitCustomCell")
                 
-                // 초기에는 actionTableView만 보이도록 설정
-                actionTableView.isHidden = false
-                limitTableView.isHidden = true
+        // 초기에는 actionTableView만 보이도록 설정
+        actionTableView.isHidden = false
+        limitTableView.isHidden = true
+        
+        func setupTableView1(_ tableView: UITableView, items: [ActionDummyDataType], identifier: String) {
+                view.addSubview(tableView)
+                tableView.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    tableView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -500),
+                    tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                    tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                    tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+                ])
+
+                tableView.dataSource = self
+                tableView.delegate = self
+                tableView.register(ActionTableViewCell.self, forCellReuseIdentifier: identifier)
+            }
         
         func setupTableView(_ tableView: UITableView, items: [LimitDummyDataType], identifier: String) {
                 view.addSubview(tableView)
@@ -86,6 +153,7 @@ class MainVC: UIViewController, LimitItemDelegate {
                 tableView.delegate = self
                 tableView.register(LimitTableViewCell.self, forCellReuseIdentifier: identifier)
             }
+        
         
         view.backgroundColor = .white
         
@@ -237,9 +305,26 @@ class MainVC: UIViewController, LimitItemDelegate {
         }
     
     @objc func actionButtonTapped() {
+        
         let actionItemController = ActionItemController()
+        actionItemController.delegate = self
+        
+        let addActionItemController = AddActionItemController()
+        addActionItemController.delegate = self // delegate 설정
+        
         navigationController?.pushViewController(actionItemController, animated: true)
-        let monitoringView = MonitoringView()
+//        //MARK: 서윤 - saveactionitem 확인
+//        let saveActionItemController = SaveActionItemController()
+//        navigationController?.pushViewController(saveActionItemController, animated: true)
+
+        
+//        let monitoringView = MonitoringView()
+
+        // SwiftUI 뷰를 호스팅하는 UIHostingController 생성
+//        let hostingController = UIHostingController(rootView: monitoringView)
+//        let actionItemController = ActionItemController()
+//        navigationController?.pushViewController(actionItemController, animated: true)
+//        let monitoringView = MonitoringView()
 
         // SwiftUI 뷰를 호스팅하는 UIHostingController 생성
 //        let hostingController = UIHostingController(rootView: monitoringView)
@@ -255,21 +340,28 @@ class MainVC: UIViewController, LimitItemDelegate {
     @objc func addButtonTapped() {
 
         let limitItemController = LimitItemController()
-//        limitItemController.delegate = self // LimitItemDelegate 설정
-//        navigationController?.pushViewController(limitItemController, animated: true)
+        limitItemController.delegate = self // LimitItemDelegate 설정
+        navigationController?.pushViewController(limitItemController, animated: true)
 
-        // MARK: - ram test code
-         print("addButtonTapped")
-         // SwiftUI 뷰 인스턴스 생성
-         let scheduleView = ScheduleView()
 
-         // SwiftUI 뷰를 호스팅하는 UIHostingController 생성
-         let hostingController = UIHostingController(rootView: scheduleView)
-
-         // 네비게이션 컨트롤러를 사용하여 화면 전환
-         navigationController?.pushViewController(hostingController, animated: true)
+//        // MARK: - ram test code
+//         print("addButtonTapped")
+//         // SwiftUI 뷰 인스턴스 생성
+//         let scheduleView = ScheduleView()
+//
+//         // SwiftUI 뷰를 호스팅하는 UIHostingController 생성
+//         let hostingController = UIHostingController(rootView: scheduleView)
+//
+////          네비게이션 컨트롤러를 사용하여 화면 전환
+//         navigationController?.pushViewController(hostingController, animated: true)
 
     }
+
+//    func didAddActionItemText(_ text: String) {
+//    }
     
+    func didActionItemText(_ text: String) {
+    }
+
 
 }

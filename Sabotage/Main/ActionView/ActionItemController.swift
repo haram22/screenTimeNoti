@@ -4,6 +4,8 @@ import Then
 
 class ActionItemController: UIViewController {
     
+    weak var delegate: AddActionItemDelegate?
+    
     let titleLabel = UILabel()
     let backButton = UIButton(type: .system)
     let nextButton = UIButton(type: .system)
@@ -13,8 +15,10 @@ class ActionItemController: UIViewController {
     let cButton = UIButton(type: .system)
     let dButton = UIButton(type: .system)
     let eButton = UIButton(type: .system)
+    let fButton = UIButton(type: .system)
     
     var selectedRadioButton: UIButton?
+    var selectedButtonName: String? // 선택된 버튼의 이름을 저장하는 변수
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,8 +81,8 @@ class ActionItemController: UIViewController {
     }
     
     func setButtonUI() {
-        let buttons = [aButton, bButton, cButton, dButton, eButton]
-        let buttonTitles = ["A", "B", "C", "D", "E"]
+        let buttons = [aButton, bButton, cButton, dButton, eButton, fButton]
+        let buttonTitles = ["운동", "셀프케어", "생활", "생산성", "성장", "숙면"]
         
         for (index, button) in buttons.enumerated() {
             view.addSubview(button.then {
@@ -92,7 +96,7 @@ class ActionItemController: UIViewController {
     }
     
     func setButtonConstraints() {
-        let allButtons = [aButton, bButton, cButton, dButton, eButton]
+        let allButtons = [aButton, bButton, cButton, dButton, eButton, fButton]
         
         for (index, button) in allButtons.enumerated() {
             var topAnchor: ConstraintItem
@@ -112,7 +116,7 @@ class ActionItemController: UIViewController {
     }
     
     func setRadioButtonUI() {
-        let buttons = [aButton, bButton, cButton, dButton, eButton]
+        let buttons = [aButton, bButton, cButton, dButton, eButton, fButton]
         for button in buttons {
             let radioButton = UIButton(type: .system).then {
                 $0.setImage(UIImage(systemName: "circle"), for: .normal)
@@ -145,10 +149,26 @@ class ActionItemController: UIViewController {
     
     @objc func nextButtonTapped() {
         if selectedRadioButton != nil {
+            selectedButtonName = selectedRadioButton?.titleLabel?.text // 선택된 버튼의 이름을 변수에 저장
+
             let addActionItemController = AddActionItemController()
+            addActionItemController.selectedButtonName = selectedButtonName // 선택된 버튼의 이름을 전달
+
             navigationController?.pushViewController(addActionItemController, animated: true)
         }
     }
+    
+//    @objc func nextButtonTapped() {
+//        if selectedRadioButton != nil {
+//            selectedButtonName = selectedRadioButton?.titleLabel?.text // 선택한 버튼의 이름 가져오기
+//
+//            if let addActionItemController = navigationController?.viewControllers.first(where: { $0 is AddActionItemController }) as? AddActionItemController {
+//                addActionItemController.selectedButtonName = selectedButtonName // 기존 컨트롤러의 선택한 버튼 이름 업데이트
+//                navigationController?.popViewController(animated: true) // AddActionItemController로 다시 돌아가기
+//            }
+//        }
+//    }
+
     
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
