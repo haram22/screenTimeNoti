@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "check-circle.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "KakaoTalk_Photo_2024-01-01-04-51-49.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

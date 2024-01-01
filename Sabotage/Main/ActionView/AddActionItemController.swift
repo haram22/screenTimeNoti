@@ -8,16 +8,26 @@
 import UIKit
 import SnapKit
 
+protocol ActionItemDelegate: AnyObject {
+    func didAddActionItemText(_ text: String)
+    // Add any other methods needed to pass data back to MainVC
+}
+
+
 class AddActionItemController: UIViewController, UITextFieldDelegate {
-    
-    weak var delegate: AddActionItemDelegate?
     var textField: UITextField = UITextField()
     var selectedButtonName: String? // 선택된 버튼의 이름을 저장하는 변수
 
+    weak var delegate: ActionItemDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        // MARK: -  ActionItemController에서 잘 넘어왔느닞 확인하는 코드
+        if let selectedButton = selectedButtonName {
+            print("😎 ActionItemController로부터 받은 선택된 버튼 이름: \(selectedButton)")
+        }
         
         // "X" 버튼 추가
         let closeButton = UIBarButtonItem(title: "X", style: .plain, target: self, action: #selector(closeButtonTapped))
@@ -132,18 +142,22 @@ class AddActionItemController: UIViewController, UITextFieldDelegate {
             print("입력된 텍스트가 비어 있습니다.")
             return
         }
-
-        delegate?.didAddActionItemText(text)
         
         print("⚽️ MainVC로 전달된 텍스트: \(text)") // 사용자가 작성한 목표 출력
         
         if let selectedButton = selectedButtonName {
+            delegate?.didAddActionItemText(text) // Pass the text to MainVC
             print("🎾 사용자가 선택한 버튼 이름: \(selectedButton)") // 사용자가 선택한 버튼의 이름 출력
         }
 
-        let mainVC = MainVC()
-        navigationController?.pushViewController(mainVC, animated: true)
+        if let navController = navigationController {
+            navController.popToRootViewController(animated: true) // 모든 뷰 컨트롤러를 제거하고 MainVC로 이동
+        }
     }
+
+
+
+
     
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)

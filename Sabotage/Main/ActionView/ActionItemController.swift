@@ -2,9 +2,11 @@ import UIKit
 import SnapKit
 import Then
 
-class ActionItemController: UIViewController {
+
+
+class ActionItemController: UIViewController, ActionItemDelegate {
     
-    weak var delegate: AddActionItemDelegate?
+    weak var delegate: ActionItemDelegate?
     
     let titleLabel = UILabel()
     let backButton = UIButton(type: .system)
@@ -35,7 +37,8 @@ class ActionItemController: UIViewController {
         view.addSubview(titleLabel.then {
             $0.text = "액션 아이템 생성"
             $0.textAlignment = .center
-            $0.font = UIFont.boldSystemFont(ofSize: 20)
+        }.then {
+            $0.font = UIFont.LargeTitle() // LargeTitle 폰트를 titleLabel에 적용
         })
         
         view.addSubview(backButton.then {
@@ -88,7 +91,7 @@ class ActionItemController: UIViewController {
             view.addSubview(button.then {
                 $0.setTitle(buttonTitles[index], for: .normal)
                 $0.setTitleColor(.black, for: .normal)
-                $0.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+                $0.titleLabel?.font = UIFont.LargeTitle()
                 $0.layer.cornerRadius = 15
                 $0.backgroundColor = .systemGray3
             })
@@ -119,9 +122,9 @@ class ActionItemController: UIViewController {
         let buttons = [aButton, bButton, cButton, dButton, eButton, fButton]
         for button in buttons {
             let radioButton = UIButton(type: .system).then {
-                $0.setImage(UIImage(systemName: "circle"), for: .normal)
-                $0.setImage(UIImage(systemName: "largecircle.fill.circle"), for: .selected)
-                $0.tintColor = .systemBlue
+                $0.setImage(UIImage(named: "radioButtonUnchecked"), for: .normal) // 변경된 이미지 이름으로 수정
+                $0.setImage(UIImage(named: "radioButtonChecked"), for: .selected) // 선택됐을 때 이미지 이름으로 수정
+//                $0.tintColor = .systemBlue
                 $0.isUserInteractionEnabled = false
             }
             button.addSubview(radioButton)
@@ -129,12 +132,13 @@ class ActionItemController: UIViewController {
             radioButton.snp.makeConstraints {
                 $0.trailing.equalTo(button.snp.trailing).offset(-10)
                 $0.centerY.equalTo(button.snp.centerY)
-                $0.width.height.equalTo(20)
+                $0.width.height.equalTo(40)
             }
             
             button.addTarget(self, action: #selector(radioButtonTapped(_:)), for: .touchUpInside)
         }
     }
+
     
     @objc func radioButtonTapped(_ sender: UIButton) {
         if selectedRadioButton != sender {
@@ -142,10 +146,19 @@ class ActionItemController: UIViewController {
             selectedRadioButton = sender
             selectedRadioButton?.isSelected = true
             
+            if let radioButton = sender.subviews.compactMap({ $0 as? UIImageView }).first {
+                if sender.isSelected {
+                    radioButton.image = UIImage(named: "radioButtonChecked")
+                } else {
+                    radioButton.image = UIImage(named: "radioButton")
+                }
+            }
+            
             // Update Next button color to systemBlue
             nextButton.backgroundColor = .systemBlue
         }
     }
+
     
     @objc func nextButtonTapped() {
         if selectedRadioButton != nil {
@@ -153,23 +166,18 @@ class ActionItemController: UIViewController {
 
             let addActionItemController = AddActionItemController()
             addActionItemController.selectedButtonName = selectedButtonName // 선택된 버튼의 이름을 전달
+            addActionItemController.delegate = self // Set ActionItemController as the delegate
 
             navigationController?.pushViewController(addActionItemController, animated: true)
         }
     }
     
-//    @objc func nextButtonTapped() {
-//        if selectedRadioButton != nil {
-//            selectedButtonName = selectedRadioButton?.titleLabel?.text // 선택한 버튼의 이름 가져오기
-//
-//            if let addActionItemController = navigationController?.viewControllers.first(where: { $0 is AddActionItemController }) as? AddActionItemController {
-//                addActionItemController.selectedButtonName = selectedButtonName // 기존 컨트롤러의 선택한 버튼 이름 업데이트
-//                navigationController?.popViewController(animated: true) // AddActionItemController로 다시 돌아가기
-//            }
-//        }
-//    }
+    func didAddActionItemText(_ text: String) {
+        // Handle the text received from AddActionItemController here
+        print("Text received in ActionItemController: \(text)")
+    }
 
-    
+
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
