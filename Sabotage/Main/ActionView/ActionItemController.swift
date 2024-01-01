@@ -189,34 +189,34 @@ class ActionItemController: UIViewController, ActionItemDelegate {
         navigationController?.pushViewController(gotoMainController, animated: true)
     }
 
-    func getActionData() {
-        if let url = URL(string: "\(urlLink)actionItem/\(userId)/all") {
-            let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
-                       if let error = error {
-                           print("🚨 Error: \(error.localizedDescription)")
-                           return
-                       }
-                // JSON data를 가져온다. optional 풀어줘야 함
-                if let JSONdata = data {
-                    let dataString = String(data: JSONdata, encoding: .utf8) //얘도 확인을 위한 코드임
-                    print(dataString!)
-                    // JSONDecoder 사용하기
-                    let decoder = JSONDecoder() // initialize
-                    do {
-                                        let decodeData = try decoder.decode(actionItemData.self, from: JSONdata)
-                                        DispatchQueue.main.async {
-                                            self.actionItemData = decodeData
-                                            // self.collectionView.reloadData()
-                                        }
-                                    } catch {
-                                        print("🚨 JSON decoding error: \(error)")
-                                    }
-                }
-            }
-            task.resume()
-        }
-    }
+//    func getActionData() {
+//        if let url = URL(string: "\(urlLink)actionItem/\(userId)/all") {
+//            let session = URLSession(configuration: .default)
+//            let task = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+//                       if let error = error {
+//                           print("🚨 Error: \(error.localizedDescription)")
+//                           return
+//                       }
+//                // JSON data를 가져온다. optional 풀어줘야 함
+//                if let JSONdata = data {
+//                    let dataString = String(data: JSONdata, encoding: .utf8) //얘도 확인을 위한 코드임
+//                    print(dataString!)
+//                    // JSONDecoder 사용하기
+//                    let decoder = JSONDecoder() // initialize
+//                    do {
+//                                        let decodeData = try decoder.decode(actionItemData.self, from: JSONdata)
+//                                        DispatchQueue.main.async {
+//                                            self.actionItemData = decodeData
+//                                            // self.collectionView.reloadData()
+//                                        }
+//                                    } catch {
+//                                        print("🚨 JSON decoding error: \(error)")
+//                                    }
+//                }
+//            }
+//            task.resume()
+//        }
+//    }
     
 }
 
