@@ -1,24 +1,28 @@
 PODS:
   - RKPieChart (0.0.1)
   - SnapKit (5.6.0)
+  - TAKUUID (1.5.0)
   - Then (3.0.0)
 
 DEPENDENCIES:
   - RKPieChart
   - SnapKit
+  - TAKUUID
   - Then
 
 SPEC REPOS:
   trunk:
     - RKPieChart
     - SnapKit
+    - TAKUUID
     - Then
 
 SPEC CHECKSUMS:
   RKPieChart: 8e643c505d24e61574f3a2fd6bd807403840b24b
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  TAKUUID: 48d7c690d85a27e7beb79b099349f1cf0d60c928
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: ddee38773fd2233677039f58e9bbab06e6d51c7c
+PODFILE CHECKSUM: e8f989638fa1b2bb931755bb0ab1620b778fcf11
 
 COCOAPODS: 1.14.3

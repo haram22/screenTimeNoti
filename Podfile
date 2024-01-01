@@ -7,7 +7,7 @@ target 'Sabotage' do
 pod 'SnapKit'
 pod 'Then'
 pod 'RKPieChart'
-
+pod 'TAKUUID'
   # Pods for Sabotage
 
 end

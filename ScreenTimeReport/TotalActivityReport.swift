@@ -68,13 +68,13 @@ struct TotalActivityReport: DeviceActivityReportScene {
                 else if totalActivityDuration >= limitTime + 60 && totalActivityDuration <= limitTime + 120 { // 10 minutes
                     scheduleNotification2()
                 }
-                func setNotifications() {
-                    let manager = LocalNotificationManager()
+//                func setNotifications() {
+//                    let manager = LocalNotificationManager()
+////                    manager.requestPermission()
 //                    manager.requestPermission()
-                    manager.requestPermission()
-                    manager.addNotification(title: "This is a test reminder")
-                    manager.schedule()
-                }
+//                    manager.addNotification(title: "This is a test reminder")
+//                    manager.schedule()
+//                }
                 func scheduleNotification_each0(appName: String) {
                     if notificationSentForApps["\(appName)1"] != true {
                         let content = UNMutableNotificationContent()

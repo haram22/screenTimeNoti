@@ -4,8 +4,6 @@ import SwiftUI
 import SnapKit
 import Then
 
-// limit item
-// why??
 class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
     
     // tableview data
@@ -230,10 +228,10 @@ class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // dailyBudgetButton을 탭할 때 datePicker 표시/숨김 토글
-//    @objc func showHideDatePicker() {
-//        countDownDatePicker.isHidden = !countDownDatePicker.isHidden
-//    }
-
+    //    @objc func showHideDatePicker() {
+    //        countDownDatePicker.isHidden = !countDownDatePicker.isHidden
+    //    }
+    
     
     // 앱 하루 총 사용 시간
     @objc func datePickerValueChanged() {
@@ -365,28 +363,26 @@ class LimitItemController: UIViewController, UIGestureRecognizerDelegate {
     // "완료" 버튼 클릭 시
     @objc func completeButtonTapped() {
         // Check if inputName meets the character limit
-
-//         if let text = inputName.text, !text.isEmpty, text.count <= 3 {
-//             // If it's within the limit, proceed to the MainVC
-//             let completeActionItemController = MainVC()
-//             navigationController?.pushViewController(completeActionItemController, animated: true)
-//             // Hide the error label if validation passes
-//             errorLabel.isHidden = true
-//             limitPostRequest(with: 1, title: "title", apps: ["a", "b"], timeBudget: 2)
-
+        
+        //         if let text = inputName.text, !text.isEmpty, text.count <= 3 {
+        //             // If it's within the limit, proceed to the MainVC
+        //             let completeActionItemController = MainVC()
+        //             navigationController?.pushViewController(completeActionItemController, animated: true)
+        //             // Hide the error label if validation passes
+        //             errorLabel.isHidden = true
+        //             limitPostRequest(with: 1, title: "title", apps: ["a", "b"], timeBudget: 2)
+        
         if let text = inputName.text, !text.isEmpty, text.count <= 10 {
             // If it's within the limit, proceed to update the MainVC's data
             delegate?.addNewLimitItem(text)
-//            limitPostRequest(with: 1, title: "title", apps: ["a", "b"], timeBudget: 2)
+            limitPostRequest(with: 0, title: "title", apps: ["a", "b"], timeBudget: 0)
             // Dismiss the LimitItemController
             navigationController?.popViewController(animated: true)
-
+            
         } else {
             errorLabel.text = "10자 이내로 작성해주세요"
             errorLabel.isHidden = false
         }
-        
-        
         print("그룹 이름 : \(String(describing: inputName.text))")
         print("제한 중인 앱 : \(FamilyActivitySelection().applications)")
         print("하루 총 사용 시간 : \(timeLabel.text)")
@@ -401,7 +397,7 @@ extension LimitItemController: UITextFieldDelegate {
         return true
     }
 }
- 
+
 
 extension LimitItemController {
     
@@ -412,7 +408,7 @@ extension LimitItemController {
         tapGesture.delegate = self
         view.addGestureRecognizer(tapGesture)
     }
-
+    
     @objc func dismissPicker(_ gestureRecognizer: UITapGestureRecognizer) {
         print("dismissPicker")
         let touchLocation = gestureRecognizer.location(in: view)
@@ -420,27 +416,27 @@ extension LimitItemController {
         if !countDownDatePicker.isHidden && !countDownDatePicker.frame.contains(touchLocation) {
             hideCountDownDatePicker()
         }
-
+        
         if !countDownDatePicker2.isHidden && !countDownDatePicker2.frame.contains(touchLocation) {
             hideCountDownDatePicker2()
         }
     }
-
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         print("gestureRecognizer")
         let touchLocation = touch.location(in: view)
-
+        
         if !countDownDatePicker.isHidden && countDownDatePicker.frame.contains(touchLocation) {
-//            print("toggle in gestureRecognizer")
-//            isDatePickerVisible.toggle()
+            //            print("toggle in gestureRecognizer")
+            //            isDatePickerVisible.toggle()
             return false
         }
-
+        
         if !countDownDatePicker2.isHidden && countDownDatePicker2.frame.contains(touchLocation) {
-//            isDatePickerVisible.toggle()
+            //            isDatePickerVisible.toggle()
             return false
         }
-
+        
         return true
     }
     
