@@ -208,7 +208,7 @@ extension ScheduleView {
                             Picker("Hours", selection: $selectedGoalHours) {
                                 ForEach(hours, id: \.self) { hour in
                                     Text("\(hour)").tag(hour)
-                                }.foregroundColor(.green)
+                                }
                             }
                             .pickerStyle(WheelPickerStyle())
                             .frame(width: 70)
@@ -220,7 +220,7 @@ extension ScheduleView {
                             Picker("Minutes", selection: $selectedGoalMinutes) {
                                 ForEach(minutes, id: \.self) { minute in
                                     Text("\(minute)").tag(minute)
-                                }.foregroundColor(.green)
+                                }
                             }
                             .pickerStyle(WheelPickerStyle())
                             .frame(width: 70)

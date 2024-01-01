@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class AddActionItemController: UIViewController {
+class AddActionItemController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -55,6 +55,8 @@ class AddActionItemController: UIViewController {
         textField.placeholder = "여기에 입력하세요"
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.returnKeyType = .done
+        textField.delegate = self
         
         // 텍스트 필드를 뷰에 추가
         view.addSubview(textField)
@@ -105,6 +107,7 @@ class AddActionItemController: UIViewController {
     }
     
     @objc func completeButtonTapped() {
+//        actionPostRequest(category: <#T##String#>, content: <#T##String#>)
         let saveActionItemController = SaveActionItemController()
         navigationController?.pushViewController(saveActionItemController, animated: true)
     }
@@ -118,5 +121,9 @@ class AddActionItemController: UIViewController {
         let gotoMainController = MainVC()
         navigationController?.pushViewController(gotoMainController, animated: true)
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder() // 키보드 숨기기
+            return true
+        }
 }
 
